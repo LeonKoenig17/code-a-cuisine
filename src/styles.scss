@@ -23,6 +23,16 @@
 
 $primary-font-color: #FAF0E6;
 $header-height: 136px;
+$background-green: #396039;
+$background-white: #FFFFFF;
+
+.bg-green {
+    background-color: $background-green;
+}
+
+.bg-white {
+    background-color: $background-white;
+}
 
 body {
     margin: 0;

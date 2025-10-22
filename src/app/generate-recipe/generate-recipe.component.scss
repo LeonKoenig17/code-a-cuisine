@@ -1,0 +1,81 @@
+@import "../../styles.scss";
+
+:host {
+    @include dFlex(); 
+}
+
+section {
+    @include contentLimit();
+    text-align: center;
+    flex-direction: column;
+    h1 {
+        font-size: 54px;
+        color: #1E5515;
+        margin-bottom: 0;
+    }
+    p {
+        font-size: 24px;
+        color: #10310B;
+    }
+    .fields {
+        @include dFlex($ai: flex-start);
+        gap: 56px;
+        margin-top: 90px;
+        >div {
+            background-color: #3960394D;
+            border-radius: 20px;
+            padding: 25px;
+            font-size: 20px;
+            color: #10310B;
+            p {
+                margin-bottom: 8px;
+                margin-top: 0;
+                font-size: 20px;
+                font-weight: 500;
+                color: #10310B;
+            }
+        }
+    }
+}
+
+.input {
+    @include dFlex($ai: flex-start, $jc: unset);
+    min-height: 160px;
+    gap: 32px;
+    >div {
+        text-align: start;
+        flex-direction: column;
+    }
+    input {
+        border-radius: 20px;
+        border: none;
+        background-color: #FAF0E6CC;
+        padding: 8px 12px;
+    }
+}
+
+.ingredients {
+    width: 300px;
+    input {
+        width: calc(100% - 12px * 2);
+    }
+}
+
+.serving {
+    .serving-input {
+        @include dFlex();
+        gap: 8px;
+        input {
+            max-width: 50px;
+        }
+        img:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.ingredient-list {
+    min-height: 200px;
+    width: 470px;
+    text-align: start;
+}
