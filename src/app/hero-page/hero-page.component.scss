@@ -1,0 +1,60 @@
+@import "./../../styles.scss";
+
+:host {
+    @include dFlex();
+    height: calc(100vh - $header-height);
+}
+
+section {
+    @include dFlex($jc: space-around, $ai: flex-start);
+    flex-direction: column;
+    @include contentLimit(100%);
+    position: relative;
+    >*:not(.hero-img) {
+        z-index: 10;
+    }
+}
+
+.header {
+    h1 {
+        font-size: 104px;
+        font-family: Ubuntu;
+        color: $primary-font-color;
+        margin-top: 0;
+    }
+    h2 {
+        font-size: 48px;
+        color: #F5F5DC;
+        margin: 0;
+        font-weight: 600;
+    }
+    button {
+        font-size: 24px;
+        color: #008000;
+        padding: 16px 26px;
+        border: none;
+        background-color: $primary-font-color;
+    }
+}
+
+.cookbook-link {
+    @include dFlex($ai: center);
+    span {
+        font-size: 32px;
+        color: $primary-font-color;
+    }
+    button {
+        font-size: 20px;
+        color: $primary-font-color;
+        background: none;
+        border: none;
+        margin-left: 30px;
+    }
+}
+
+.hero-img {
+    position: absolute;
+    top: -$header-height;
+    right: 0;
+    height: 100vh;
+}

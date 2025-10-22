@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Quicksand;
+    src: url("./assets/Quicksand-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url("./assets/Ubuntu-Regular.ttf");
+}
+
+@mixin dFlex($jc: center, $ai: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin contentLimit($height: unset, $padY: 0px, $padX: 60px) {
+    height: $height;
+    width: 100%;
+    max-width: calc(1440px - $padX * 2);
+    padding: $padY $padX;
+}
+
+$primary-font-color: #FAF0E6;
+$header-height: 136px;
+
+body {
+    margin: 0;
+    * {
+        font-family: Quicksand;
+    }
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+h1, h2, h3, p, span {
+    &:hover {
+        cursor: default;
+    }
+}

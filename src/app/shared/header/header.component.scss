@@ -1,0 +1,10 @@
+@import "./../../../styles.scss";
+
+:host {
+    @include dFlex(center);
+}
+
+section {
+    @include dFlex($jc: flex-start);
+    @include contentLimit($header-height);
+}
