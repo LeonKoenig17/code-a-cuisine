@@ -25,5 +25,6 @@ export class GenerateRecipeComponent {
 
   ingredients = [
     { name: 'Tomato', quantity: 2, unit: 'piece' },
+    { name: 'Tomato', quantity: 2, unit: 'piece' },
   ];
 }
