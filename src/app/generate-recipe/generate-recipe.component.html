@@ -10,14 +10,25 @@
             <div class="serving">
                 <p>Serving size</p>
                 <div class="serving-input">
-                    <input type="number">
-                    <input type="text">
+                    <input type="number" value="100">
+                    <div class="dropdown">
+                        <div class="unit" (click)="toggleDropdown()">
+                            <span>{{ selectedUnit }}</span>
+                            <img src="/assets/images/generate-recipe/drop-arrow-down.png" alt="">
+                        </div>
+                        <ul *ngIf="isOpen">
+                            <li *ngFor="let unit of units" (click)="selectUnit(unit)">{{ unit }}</li>
+                        </ul>
+                    </div>
                     <img src="/assets/images/generate-recipe/servings-plus.png" alt="">
                 </div>
             </div>
         </div>
         <div class="ingredient-list">
             <p>List of your Ingredients</p>
+            <ul>
+                <li *ngFor="let ingredient of ingredients"><app-single-ingredient></app-single-ingredient></li>
+            </ul>
         </div>
     </div>
 </section>

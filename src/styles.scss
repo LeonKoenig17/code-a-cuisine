@@ -38,6 +38,7 @@ body {
     margin: 0;
     * {
         font-family: Quicksand;
+        transition: all 0.2s ease-in-out;
     }
 }
 
@@ -57,3 +58,9 @@ h1, h2, h3, p, span {
         cursor: default;
     }
 }
+
+input:focus {
+    outline: none;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

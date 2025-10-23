@@ -21,6 +21,7 @@ section {
         @include dFlex($ai: flex-start);
         gap: 56px;
         margin-top: 90px;
+        font-weight: 500;
         >div {
             background-color: #3960394D;
             border-radius: 20px;
@@ -31,7 +32,6 @@ section {
                 margin-bottom: 8px;
                 margin-top: 0;
                 font-size: 20px;
-                font-weight: 500;
                 color: #10310B;
             }
         }
@@ -46,11 +46,13 @@ section {
         text-align: start;
         flex-direction: column;
     }
-    input {
+    input, .unit {
         border-radius: 20px;
         border: none;
         background-color: #FAF0E6CC;
         padding: 8px 12px;
+        font-weight: 500;
+        color: #10310B;
     }
 }
 
@@ -58,18 +60,54 @@ section {
     width: 300px;
     input {
         width: calc(100% - 12px * 2);
+        font-size: 16px;
     }
 }
 
 .serving {
     .serving-input {
-        @include dFlex();
+        @include dFlex($ai: flex-start);
         gap: 8px;
+        .dropdown {
+            @include dFlex();
+            flex-direction: column;
+            white-space: nowrap;
+            ul {
+                flex-direction: column;
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                li {
+                    margin: 4px 0;
+                    padding: 2px 8px;
+                    &:hover {
+                        background-color: #faf0e6cc;
+                        border-radius: 20px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
         input {
+            text-align: center;
+        }
+        input, .unit {
             max-width: 50px;
+            font-size: 16px;
+        }
+        .unit {
+            @include dFlex();
+            cursor: pointer;
+            gap: 4px;
+            * {
+                cursor: pointer;
+            }
         }
         img:hover {
             cursor: pointer;
+            background-color: #FAF0E6CC;
+            border-radius: 5px;
         }
     }
 }
@@ -78,4 +116,15 @@ section {
     min-height: 200px;
     width: 470px;
     text-align: start;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
