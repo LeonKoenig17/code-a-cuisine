@@ -1,0 +1,10 @@
+<input type="number" value="100">
+<div class="dropdown">
+    <div class="unit" (click)="toggleDropdown()">
+        <span>{{ selectedUnit }}</span>
+        <img src="/assets/images/generate-recipe/drop-arrow-down.png" alt="">
+    </div>
+    <ul *ngIf="isOpen">
+        <li *ngFor="let unit of units" (click)="selectUnit(unit)">{{ unit }}</li>
+    </ul>
+</div>

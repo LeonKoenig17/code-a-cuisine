@@ -7,4 +7,7 @@
 section {
     @include dFlex($jc: flex-start);
     @include contentLimit($header-height);
+    img:hover {
+        cursor: pointer;
+    }
 }
