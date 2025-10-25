@@ -1,7 +1,7 @@
 @import "../../../styles.scss";
 
 :host {
-    @include dFlex(); 
+    @include dFlex($ai: flex-start); 
     gap: 8px;
     * {
         font-weight: 500;
@@ -9,26 +9,30 @@
 } 
 
 input, .dropdown {
+    color: #10310B;
+    font-size: 18px;
+}
+
+input, .unit {
     border-radius: 48px;
     background-color: #FAF0E6;
-    height: 36px;
-    color: #10310B;
+    height: calc(36px - 3px * 2);
+    padding: 3px 15px;
 }
 
 input {
-    width: calc(71px - 15px * 2);
+    width: calc(75px - 15px * 2);
     border: none;
-    padding: 3px 15px;
-    font-size: 18px;
     text-align: center;
 }
 
 .dropdown {
     @include dFlex();
-    padding: 5px;
-    width: 70px;
+    flex-direction: column;
+    gap: 4px;
     .unit {
         @include dFlex();
+        width: calc(80px - 15px * 2);
         gap: 4px;
     }
     &:hover {
@@ -36,6 +40,22 @@ input {
     }
     * {
         cursor: pointer;
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        li {
+            padding: 2px 8px;
+            width: 40px;
+            text-align: center;
+            &:hover {
+                background-color: #faf0e6cc;
+                border-radius: 20px;
+                cursor: pointer;
+            }
+        }
     }
 }
 

@@ -10,16 +10,7 @@
             <div class="serving">
                 <p>Serving size</p>
                 <div class="serving-input">
-                    <input type="number" value="100">
-                    <div class="dropdown">
-                        <div class="unit" (click)="toggleDropdown()">
-                            <span>{{ selectedUnit }}</span>
-                            <img src="/assets/images/generate-recipe/drop-arrow-down.png" alt="">
-                        </div>
-                        <ul *ngIf="isOpen">
-                            <li *ngFor="let unit of units" (click)="selectUnit(unit)">{{ unit }}</li>
-                        </ul>
-                    </div>
+                    <app-serving></app-serving>
                     <img src="/assets/images/generate-recipe/servings-plus.png" alt="">
                 </div>
             </div>
@@ -31,7 +22,6 @@
             </div>
         </div>
     </div>
-    <app-serving></app-serving>
     <div class="button">
         <button routerLink="/preferences">Next step</button>
     </div>
