@@ -21,7 +21,7 @@ section {
         font-family: Ubuntu;
         color: $primary-font-color;
         margin-top: 0;
-        background-color: $background-green;
+        // background-color: $background-green;
         padding-right: 20px;
     }
     h2 {
@@ -29,20 +29,25 @@ section {
         color: #F5F5DC;
         margin: 0;
         font-weight: 600;
-        background-color: $background-green;
+        // background-color: $background-green;
     }
     button {
         font-size: 24px;
+        font-weight: 600;
         color: #008000;
         padding: 16px 26px;
         border: none;
         background-color: $primary-font-color;
+        &:hover {
+            background-color: #FAE0C6;
+            font-weight: bold;
+        }
     }
 }
 
 .cookbook-link {
     @include dFlex($ai: center);
-    background-color: $background-green;
+    // background-color: $background-green;
     padding-right: 20px;
     span {
         font-size: 32px;
@@ -54,6 +59,10 @@ section {
         background: none;
         border: none;
         margin-left: 30px;
+        padding: 16px 26px;
+        &:hover {
+            background-color: #3960391A;
+        }
     }
 }
 
