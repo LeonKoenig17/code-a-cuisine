@@ -1,20 +1,19 @@
 @import "../../../styles.scss";
 
-:host {
-    // @include dFlex();
-    // height: 30px;
+section {
+    @include dFlex($jc: space-between, $ai: flex-start);
+    width: 100%;
+    font-size: 18px;
+    min-height: 30px;
+    gap: 8px;
+    >*:not(app-serving) {
+        @include dFlex();
+        height: 30px;
+    }
     &:hover {
-        cursor: pointer;
         background-color: #FAF0E6CC;
         border-radius: 5px;
     }
-}
-
-section {
-    @include dFlex($jc: space-between);
-    width: 100%;
-    font-size: 18px;
-    height: 30px;
     .bullet {
         margin-left: 10px;
     }
@@ -32,6 +31,7 @@ section {
             border-radius: 2px;
             padding: 2px;
             &:hover {
+                cursor: pointer;
                 background-color: #39603966;
                 border-radius: 5px;
             }
@@ -41,5 +41,18 @@ section {
                 }
             }
         }
+        .check {
+            padding: 4px 2px;
+            &:hover {
+                background-color: #FAF0E6;
+            }
+        }
+    }
+}
+
+.edit-mode {
+    background-color: initial !important;
+    >*:not(app-serving) {
+        height: 36px;
     }
 }

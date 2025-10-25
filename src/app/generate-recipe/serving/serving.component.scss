@@ -17,11 +17,11 @@ input, .unit {
     border-radius: 48px;
     background-color: #FAF0E6;
     height: calc(36px - 3px * 2);
-    padding: 3px 15px;
+    padding: 3px 12px;
 }
 
 input {
-    width: calc(75px - 15px * 2);
+    width: calc(72px - 12px * 2);
     border: none;
     text-align: center;
 }
@@ -32,7 +32,7 @@ input {
     gap: 4px;
     .unit {
         @include dFlex();
-        width: calc(80px - 15px * 2);
+        width: calc(80px - 12px * 2);
         gap: 4px;
     }
     &:hover {
