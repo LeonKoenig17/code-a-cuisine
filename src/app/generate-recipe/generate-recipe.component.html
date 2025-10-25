@@ -5,20 +5,24 @@
         <div class="input">
             <div class="ingredients">
                 <p>Ingredient</p>
-                <input type="text">
+                <input [(ngModel)]="ingredientName" type="text">
             </div>
             <div class="serving">
                 <p>Serving size</p>
                 <div class="serving-input">
-                    <app-serving></app-serving>
-                    <img src="/assets/images/generate-recipe/servings-plus.png" alt="">
+                    <app-serving (servingChange)="receiveServing($event)"></app-serving>
+                    <img (click)="addToList()" src="/assets/images/generate-recipe/servings-plus.png" alt="">
                 </div>
             </div>
         </div>
         <div class="ingredient-list">
             <p>List of your Ingredients</p>
             <div class="items">
-                <app-single-ingredient *ngFor="let ingredient of ingredients"></app-single-ingredient>
+                <app-single-ingredient *ngFor="let ingredient of ingredients"
+                    [name]="ingredient.name"
+                    [quantity]="ingredient.quantity"
+                    [unit]="ingredient.unit"
+                ></app-single-ingredient>
             </div>
         </div>
     </div>
