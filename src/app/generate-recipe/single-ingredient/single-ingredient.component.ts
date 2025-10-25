@@ -19,4 +19,9 @@ export class SingleIngredientComponent {
   toggleEditMode() {
     this.editMode_enabled = !this.editMode_enabled;
   }
+
+  receiveServing(event: {quantity: string, unit: string}) {
+    this.quantity = event.quantity;
+    this.unit = event.unit;
+  }
 }

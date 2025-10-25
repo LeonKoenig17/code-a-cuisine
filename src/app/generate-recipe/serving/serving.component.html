@@ -1,4 +1,4 @@
-<input [(ngModel)]="inputQuantity" (input)="onInput($event)" type="text" value="100" maxlength="4" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+<input [(ngModel)]="inputQuantity" (input)="onInput($event)" type="text" maxlength="4" pattern="\d*" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
 <div class="dropdown">
     <div class="unit" (click)="toggleDropdown()">
         <span>{{ selectedUnit }}</span>

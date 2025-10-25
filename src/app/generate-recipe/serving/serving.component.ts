@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -13,9 +13,13 @@ export class ServingComponent {
   isOpen = false;
   src = "/assets/images/generate-recipe/drop-arrow-down.png";
   units = ['piece', 'ml', 'gram'];
-  selectedUnit: string = 'gram';
-  inputQuantity: string = "100";
+  
+  @Input() quantity: string = '';
+  @Input() unit: string = '';
 
+  selectedUnit: string = '';
+  inputQuantity: string = '';
+  
   @Output() servingChange = new EventEmitter<{quantity: string, unit: string}>();
 
   toggleDropdown() {
@@ -24,6 +28,8 @@ export class ServingComponent {
   }
 
   ngOnInit() {
+    this.inputQuantity = this.quantity || '100';
+    this.selectedUnit = this.unit || 'gram';
     this.servingChange.emit({quantity: this.inputQuantity, unit: this.selectedUnit});
   }
 
@@ -40,10 +46,8 @@ export class ServingComponent {
   }
 
   toggleArrow() {
-    if (this.isOpen) {
-      this.src = "/assets/images/generate-recipe/drop-arrow-up.png";
-    } else {
-      this.src = "/assets/images/generate-recipe/drop-arrow-down.png";
-    }
+    this.src = this.isOpen
+      ? "/assets/images/generate-recipe/drop-arrow-up.png"
+      : "/assets/images/generate-recipe/drop-arrow-down.png";
   }
 }

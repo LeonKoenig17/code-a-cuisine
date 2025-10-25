@@ -1,58 +1,63 @@
 @import "../../../styles.scss";
 
 section {
-    @include dFlex($jc: space-between, $ai: flex-start);
+    @include dFlex($jc: space-between);
     width: 100%;
     font-size: 18px;
-    min-height: 30px;
-    gap: 8px;
-    >*:not(app-serving) {
-        @include dFlex();
-        height: 30px;
-    }
+    // gap: 8px;
     &:hover {
         background-color: #FAF0E6CC;
         border-radius: 5px;
     }
-    .bullet {
-        margin-left: 10px;
+    .info {
+        @include dFlex($ai: flex-start);
+        min-height: 30px;
+        gap: 8px;
+        >*:not(app-serving) {
+            @include dFlex();
+            height: 30px;
+        }
+        .bullet {
+            margin-left: 10px;
+        }
+        .quantity {
+            margin: 0 8px;
+        }
+        .name {
+            width: 50%;
+        }
     }
-    .quantity {
-        margin: 0 8px;
-    }
-    .name {
-        width: 50%;
-    }
-    .buttons {
-        @include dFlex();
-        gap: 16px;
-        margin-right: 4px;
-        svg {
-            border-radius: 2px;
-            padding: 2px;
-            &:hover {
-                cursor: pointer;
-                background-color: #39603966;
-                border-radius: 5px;
-            }
-            &:active {
-                path {
-                    fill: #FFFEFE;
-                }
+}
+
+.buttons {
+    @include dFlex();
+    gap: 16px;
+    margin-right: 4px;
+    svg {
+        border-radius: 2px;
+        padding: 2px;
+        &:hover {
+            cursor: pointer;
+            background-color: #39603966;
+            border-radius: 5px;
+        }
+        &:active {
+            path {
+                fill: #FFFEFE;
             }
         }
-        .check {
-            padding: 4px 2px;
-            &:hover {
-                background-color: #FAF0E6;
-            }
+    }
+    .check {
+        padding: 4px 2px;
+        &:hover {
+            background-color: #FAF0E6;
         }
     }
 }
 
 .edit-mode {
     background-color: initial !important;
-    >*:not(app-serving) {
+    .info >*:not(app-serving) {
         height: 36px;
     }
 }
