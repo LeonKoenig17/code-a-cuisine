@@ -26,9 +26,13 @@
         </div>
         <div class="ingredient-list">
             <p>List of your Ingredients</p>
-            <ul>
-                <li *ngFor="let ingredient of ingredients"><app-single-ingredient></app-single-ingredient></li>
-            </ul>
+            <div class="items">
+                <app-single-ingredient *ngFor="let ingredient of ingredients"></app-single-ingredient>
+            </div>
         </div>
+    </div>
+    <app-serving></app-serving>
+    <div class="button">
+        <button routerLink="/preferences">Next step</button>
     </div>
 </section>

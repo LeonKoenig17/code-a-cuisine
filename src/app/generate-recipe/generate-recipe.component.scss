@@ -18,9 +18,9 @@ section {
         color: #10310B;
     }
     .fields {
-        @include dFlex($ai: flex-start);
+        @include dFlex($ai: flex-start, $jc: unset);
         gap: 56px;
-        margin-top: 90px;
+        margin: 90px;
         font-weight: 500;
         >div {
             background-color: #3960394D;
@@ -39,9 +39,10 @@ section {
 }
 
 .input {
-    @include dFlex($ai: flex-start, $jc: unset);
+    @include dFlex($ai: flex-start, $jc: space-between);
     min-height: 160px;
     gap: 32px;
+    width: 60%;
     >div {
         text-align: start;
         flex-direction: column;
@@ -57,7 +58,7 @@ section {
 }
 
 .ingredients {
-    width: 300px;
+    width: 400px;
     input {
         width: calc(100% - 12px * 2);
         font-size: 16px;
@@ -114,8 +115,24 @@ section {
 
 .ingredient-list {
     min-height: 200px;
-    width: 470px;
+    width: 400px;
     text-align: start;
+    .items {
+        display: grid;
+        gap: 6px;
+    }
+}
+
+.button {
+    @include dFlex($jc: flex-end);
+    margin-right: 90px;
+    button {
+        background-color: #396039;
+        border: none;
+        color: #FAF0E6;
+        font-size: 24px;
+        padding: 16px 26px;
+    }
 }
 
 input[type=number]::-webkit-outer-spin-button,

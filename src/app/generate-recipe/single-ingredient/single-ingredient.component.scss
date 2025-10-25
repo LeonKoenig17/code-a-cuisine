@@ -1,0 +1,33 @@
+@import "../../../styles.scss";
+
+:host {
+    // @include dFlex();
+    &:hover {
+        cursor: pointer;
+        background-color: #FAF0E6CC;
+        border-radius: 5px;
+    }
+}
+
+section {
+    @include dFlex($jc: space-between);
+    font-size: 18px;
+    .bullet {
+        margin-left: 10px;
+    }
+    .quantity {
+        margin: 0 8px;
+    }
+    .name {
+        width: 50%;
+    }
+    .buttons {
+        @include dFlex();
+        gap: 16px;
+        margin-right: 4px;
+        img:hover {
+            background-color: #39603966;
+            border-radius: 5px;
+        }
+    }
+}
