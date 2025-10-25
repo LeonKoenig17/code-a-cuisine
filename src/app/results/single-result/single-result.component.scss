@@ -1,0 +1,46 @@
+@import "../../../styles.scss";
+
+section {
+    @include dFlex($ai: flex-start, $jc: space-between);
+    flex-direction: column;
+    background-color: #DBE0DB;
+    padding: 32px 24px;
+    min-height: 320px;
+    max-width: 410px;
+    font-weight: 600;
+    border-radius: 20px;
+    .heading {
+        @include dFlex();
+        gap: 16px;
+        span {
+            font-size: 24px;
+            color: #1E5515;
+        }
+    }
+    >p {
+        font-size: 32px;
+        color: #10310B;
+    }
+    .cooking-time {
+        @include dFlex();
+        gap: 4px;
+        margin-bottom: 50px;
+        span {
+            font-size: 20px;
+            color: #396039;
+            font-weight: 500;
+        }
+    }
+    button {
+        font-size: 24px;
+        color: #008000;
+        padding: 16px 26px;
+        background-color: #FAF0E6;
+        border: none;
+        font-weight: 600;
+        &:hover {
+            background-color: #FAE0C6;
+            font-weight: bold;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+@import "../../styles.scss";
+
+:host {
+    @include dFlex();
+}
+
+section {
+    @include dFlex();
+    @include contentLimit();
+    flex-direction: column;
+    font-weight: 500;
+    gap: 90px;
+    margin-top: 20px;
+    .header {
+        @include dFlex();
+        height: 222px;
+    }
+    .results {
+        @include dFlex();
+        gap: 24px;
+    }
+}
+
+.text {
+    @include dFlex($ai: flex-start, $jc: space-between);
+    flex-direction: column;
+    height: 100%;
+    h1 {
+        font-size: 54px;
+        font-weight: 600;
+        color: #FAF0E6;
+        margin: 0;
+    }
+    p {
+        font-size: 24px;
+        color: #FAF0E6;
+        margin: 10px 0;
+    }
+    .tags {
+        @include dFlex();
+        gap: 16px;
+        span {
+            background-color: #FAF0E6;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            color: #1E5515
+        }
+    }
+}

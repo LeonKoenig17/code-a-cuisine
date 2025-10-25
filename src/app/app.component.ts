@@ -25,7 +25,7 @@ export class AppComponent {
         this.renderer.removeClass(body, 'bg-white');
 
         // ✅ Hero page route (make green)
-        if (event.url === '/' || event.url === '/hero') { // adjust path to your hero page
+        if (event.url === '/' || event.url === '/hero' || event.url === '/results') { // adjust path to your hero page
           this.renderer.addClass(body, 'bg-green');
           this.logoPath = "/assets/images/logo-white.png";
         } else {

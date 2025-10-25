@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoadingComponent } from './loading.component';
+import { SingleResultComponent } from './single-result.component';
 
-describe('LoadingComponent', () => {
-  let component: LoadingComponent;
-  let fixture: ComponentFixture<LoadingComponent>;
+describe('SingleResultComponent', () => {
+  let component: SingleResultComponent;
+  let fixture: ComponentFixture<SingleResultComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LoadingComponent]
+      imports: [SingleResultComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(LoadingComponent);
+    fixture = TestBed.createComponent(SingleResultComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
