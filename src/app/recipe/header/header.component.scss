@@ -1,0 +1,102 @@
+@import "../../../styles.scss";
+
+section {
+    @include dFlex();
+    background-color: #FAF0E6;
+    border-radius: 20px;
+    padding: 24px;
+    * {
+        font-weight: 500;
+    }
+}
+
+.description {
+    .cooking-time {
+        @include dFlex($jc: flex-start);
+        gap: 4px;
+        span {
+            font-size: 20px;
+            color: #396039;
+        }
+    }
+    h1 {
+        font-size: 54px;
+        color: #1E5515;
+        font-weight: 600;
+        margin: 0;
+    }
+    .persons {
+        @include dFlex($jc: flex-start);
+        gap: 16px;
+        >span {
+            font-size: 20px;
+            color: #396039;
+        }
+        .chef1, .chef2 {
+            @include dFlex();
+            border-radius: 6px;
+            padding: 2px 4px;
+            gap: 4px;
+            span {
+                font-size: 18px;
+                color: #10310B;
+            }
+        }
+        .chef1 {
+            background-color: #D7DFD7;
+        }
+        .chef2 {
+            background-color: #FFD9B3;
+        }
+    }
+}
+
+.nutrition {
+    @include dFlex($ai: flex-start);
+    flex-direction: column;
+    gap: 24px;
+    * {
+        color: #10310B;
+    }
+    .tags {
+        @include dFlex();
+        gap: 16px;
+        >span, .likes {
+            @include dFlex();
+            background-color: #39603933;
+            padding: 6px 12px;
+            border-radius: 30px;
+        }
+        >span {
+            font-size: 18px;
+        }
+        .likes span {
+            font-size: 16px;
+        }
+    }
+    .info {
+        @include dFlex($ai: flex-start);
+        flex-direction: column;
+        gap: 8px;
+        p {
+            font-size: 18px;
+            margin: 0;
+        }
+        .stats {
+            @include dFlex();
+            gap: 24px;
+            .stat {
+                @include dFlex();
+                gap: 8px;
+                flex-direction: column;
+                .name {
+                    font-size: 22px;
+                    font-weight: bold;
+                }
+                .amount {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
