@@ -18,7 +18,33 @@ section {
         border-radius: 20px;
         margin: 60px 50px;
     }
-    .back, .new-recipe {
+    .cookbook-link {
+        @include dFlex();
+        gap: 32px;
+        background-color: #3960391A;
+        padding: 40px 0;
+        border-radius: 20px;
+        width: calc(100% - 50px * 2);
+        margin-bottom: 60px;
+        span {
+            font-size: 24px;
+            color: #396039;
+            font-weight: 600;
+        }
+        button {
+            font-size: 24px;
+            color: #FAF0E6;
+            font-weight: 600;
+            padding: 16px 26px;
+            background-color: #396039;
+            border: none;
+            &:hover {
+                background-color: #055E05;
+                color: white;
+            }
+        }
+    }
+    .back {
         width: 100%;
         gap: 10px;
         *:hover {
@@ -34,5 +60,18 @@ section {
     }
     .new-recipe {
         @include dFlex($jc: flex-end);
+        width: 100%;
+        button {
+            @include dFlex();
+            font-size: 14px;
+            color: #1E5515;
+            gap: 10px;
+            padding: 16px 26px;
+            border: none;
+            background: none;
+            &:hover {
+                background-color: #3960391A;
+            }
+        }
     }
 }

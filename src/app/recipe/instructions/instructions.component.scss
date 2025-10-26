@@ -1,0 +1,94 @@
+@import "../../../styles.scss";
+
+section {
+    @include dFlex();
+    flex-direction: column;
+    gap: 24px;
+    * {
+        color: #10310B;
+    }
+    .heading {
+        @include dFlex();
+        position: relative;
+        width: 100%;
+        height: 100px;
+        img {
+            position: absolute;
+            width: 100%;
+        }
+        h1 {
+            position: relative;
+            font-size: 32px;
+            color: #1E5515;
+            font-weight: 600;
+        }
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 40px;
+        align-items: flex-start;
+        .step {
+            @include dFlex($ai: flex-start);
+            flex-direction: column;
+            gap: 32px;
+            max-width: 400px;
+            .head {
+                @include dFlex();
+                gap: 16px;
+                .number {
+                    font-size: 18px;
+                    padding: 10px 3px;
+                    background-color: #FAF0E6;
+                    border-radius: 30px;
+                }
+                .title {
+                    font-size: 24px;
+                }
+            }
+            p {
+                font-size: 18px;
+                margin: 0;
+            }
+        }
+    }
+    .like-box {
+        @include dFlex();
+        gap: 24px;
+        .first {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .second {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        button {
+            border: none;
+            background: none;
+            padding: 0;
+            &:hover {
+                border-radius: 5px;
+                background-color: #D7DFD799;
+            }
+        }
+    }
+}
+
+.chef1, .chef2 {
+    @include dFlex();
+    border-radius: 6px;
+    padding: 2px 4px;
+    gap: 4px;
+    span {
+        font-size: 18px;
+        color: #10310B;
+    }
+}
+.chef1 {
+    background-color: #D7DFD7;
+}
+.chef2 {
+    background-color: #FFD9B3;
+}
