@@ -52,6 +52,6 @@
     <div class="like-box">
         <span class="first">Just finished this meal?</span>
         <span class="second">Give it a heart, so that the others know this is delicious.</span>
-        <button><img src="/assets/images/recipe/heart.png" alt=""></button>
+        <button><img [src]="imageSrc" (click)="toggleSrc()" alt=""></button>
     </div>
 </section>

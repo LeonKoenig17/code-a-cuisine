@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './instructions.component.scss'
 })
 export class InstructionsComponent {
+  imageSrc: string = "/assets/images/recipe/heart.png";
 
+  toggleSrc() {
+    this.imageSrc = 
+      this.imageSrc === "/assets/images/recipe/heart.png"
+        ? "/assets/images/recipe/heart-full.png"
+        : "/assets/images/recipe/heart.png";
+  }
 }
