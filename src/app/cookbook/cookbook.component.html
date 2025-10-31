@@ -1,1 +1,35 @@
-<p>cookbook works!</p>
+<section>
+    <div class="back">
+        <img routerLink="/results" src="/assets/images/preferences/back-arrow.png" alt="">
+        <span routerLink="/results">Back</span>
+    </div>
+    <header>
+        <div class="text">
+            <h1>Cookbook</h1>
+            <p>From quick bites to gourmet delights, explore them all in our ultimate cookbook and get inspired for your next culinary adventure.</p>
+        </div>
+        <div class="liked">
+            <div class="sub-header">
+                <span>Most liked recipes</span>
+                <img src="/assets/images/recipe/like.png" alt="">
+            </div>
+            <div class="scroll-box" #scroll
+                (mousedown)="onMouseDown($event)">
+                <app-liked-recipe></app-liked-recipe>
+                <app-liked-recipe></app-liked-recipe>
+                <app-liked-recipe></app-liked-recipe>
+                <app-liked-recipe></app-liked-recipe>
+                <app-liked-recipe></app-liked-recipe>
+            </div>
+        </div>
+    </header>
+    <div class="collection">
+        <app-cuisine *ngFor="let cuisine of collection" 
+            [name]="cuisine.name" 
+            [icon]="cuisine.icon"
+            [img]="cuisine.img"></app-cuisine>
+    </div>
+    <div class="new-recipe">
+        <button>Generate new recipe<img src="/assets/images/recipe/forward-arrow.png" alt=""></button>
+    </div>
+</section>

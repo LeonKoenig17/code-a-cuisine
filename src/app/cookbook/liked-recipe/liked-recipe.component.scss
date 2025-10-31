@@ -1,0 +1,50 @@
+@import "../../../styles.scss";
+
+section {
+    @include dFlex();
+    background-color: #DBE0DBB2;
+    padding: 16px 12px;
+    border-radius: 16px;
+    gap: 24px;
+    width: calc(370px - 12px * 2);
+    height: calc(124px - 16px * 2);
+    &:hover {
+        cursor: pointer;
+        background-color: #DBE0DB;
+    }
+    * {
+        cursor: pointer;
+        font-weight: 500;
+    }
+    .text {
+        @include dFlex($ai: flex-start);
+        flex-direction: column;
+        gap: 8px;
+        .cooking-time {
+            @include dFlex();
+            gap: 4px;
+            span {
+                font-size: 16px;
+                color: #396039;
+            }
+        }
+        p {
+            margin: 0;
+            font-size: 24px;
+            color: #1E5515;
+        }
+    }
+    .likes-div {
+         @include dFlex($ai: flex-start);
+         height: 100%;
+        .likes {
+            @include dFlex();
+            background-color: #39603933;
+            padding: 6px 12px;
+            border-radius: 30px;
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+}

@@ -1,0 +1,103 @@
+@import "../../styles.scss";
+
+:host {
+    @include dFlex();
+}
+
+section {
+    @include dFlex();
+    @include contentLimit();
+    flex-direction: column;
+    * {
+        font-weight: 500;
+    }
+    header {
+        @include dFlex($ai: flex-end);
+        background-color: #3960390A;
+        gap: 17px;
+        padding: 40px 24px;
+        border-radius: 20px;
+        max-height: calc(280px - 40px * 2);
+        width: calc(100% - 24px * 2);
+        margin: 60px 0;
+    }
+    .text {
+        display: grid;
+        gap: 16px;
+        max-width: 450px;
+        h1 {
+            font-size: 64px;
+            font-weight: bold;
+            color: #1E5515;
+            margin: 0;
+        }
+        p {
+            font-size: 24px;
+            color: #10310B;
+            margin: 0;
+        }
+    }
+    .back {
+        width: 100%;
+        gap: 10px;
+        *:hover {
+            cursor: pointer;
+        }
+        span {
+            font-size: 14px;
+            color: #1E5515;
+        }
+    }
+    .back {
+        @include dFlex($jc: flex-start);
+    }
+    .new-recipe {
+        @include dFlex($jc: flex-end);
+        width: 100%;
+        button {
+            @include dFlex();
+            font-size: 14px;
+            color: #1E5515;
+            gap: 10px;
+            padding: 16px 26px;
+            border: none;
+            background: none;
+            &:hover {
+                background-color: #3960391A;
+            }
+        }
+    }
+}
+
+.liked {
+    display: grid;
+    gap: 16px;
+    max-width: 820px;
+    width: 100%;
+    .sub-header {
+        span {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1E5515;
+        }
+    }
+    .scroll-box {
+        @include dFlex($jc: flex-start);
+        border-radius: 16px;
+        gap: 12px;
+        overflow-x: scroll;
+        user-select: none;        
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+.collection {
+    @include dFlex($ai: space-between, $jc: space-between);
+    height: 940px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
