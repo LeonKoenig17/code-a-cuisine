@@ -1,7 +1,7 @@
 <section>
     <div class="back">
-        <img routerLink="/results" src="/assets/images/preferences/back-arrow.png" alt="">
-        <span routerLink="/results">Back</span>
+        <img (click)="goBack()" src="/assets/images/preferences/back-arrow.png" alt="">
+        <span (click)="goBack()">Back</span>
     </div>
     <header>
         <div class="text">
@@ -30,6 +30,6 @@
             [img]="cuisine.img"></app-cuisine>
     </div>
     <div class="new-recipe">
-        <button>Generate new recipe<img src="/assets/images/recipe/forward-arrow.png" alt=""></button>
+        <button routerLink="/generate-recipe">Generate new recipe<img src="/assets/images/recipe/forward-arrow.png" alt=""></button>
     </div>
 </section>

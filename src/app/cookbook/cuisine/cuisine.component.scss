@@ -1,7 +1,21 @@
+*:hover {
+    cursor: pointer;
+}
+
 p {
     font-size: 28px;
     color: #1E5515;
     font-weight: 600;
     margin: 0;
     margin-bottom: 8px;
+}
+
+.image-div {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+}
+
+img:hover {
+    transform: scale(1.1);
 }

@@ -1,16 +1,23 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { LikedRecipeComponent } from './liked-recipe/liked-recipe.component';
 import { CuisineComponent } from './cuisine/cuisine.component';
-import { NgFor } from '@angular/common';
+import { NgFor, Location } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-cookbook',
   standalone: true,
-  imports: [LikedRecipeComponent, CuisineComponent, NgFor],
+  imports: [LikedRecipeComponent, CuisineComponent, NgFor, RouterLink],
   templateUrl: './cookbook.component.html',
   styleUrl: './cookbook.component.scss'
 })
 export class CookbookComponent {
+
+  constructor(private location: Location) {}
+
+  goBack() {
+    this.location.back();
+  }
 
   collection = [
     {name: "Italian", icon: "🤌", img: "/assets/images/cookbook/italian.png"},
