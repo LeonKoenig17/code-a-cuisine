@@ -1,0 +1,66 @@
+@import "../../../styles.scss";
+
+section {
+    @include dFlex($jc: space-between);
+    width: 900px;
+    padding: 6px 10px;
+    border-radius: 16px;
+    &:hover {
+        background-color: #FAF0E6B2;
+        cursor: pointer;
+        * {
+            cursor: pointer;
+        }
+    }
+    .text-grid {
+        display: grid;
+        justify-items: start;
+        align-items: center;
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(2, auto);
+        .cooking-time {
+            @include dFlex();
+            gap: 4px;
+            span {
+                font-size: 16px;
+                color: #396039;
+            }
+        }
+        p {
+            margin: 0;
+            font-size: 24px;
+            color: #1E5515;
+        }
+        >span {
+            @include dFlex();
+            width: 30px;
+            height: 30px;
+            background-color: #F6E3CF;
+            border-radius: 100%;
+            font-size: 18px;
+            color: #1E5515;
+            margin-right: 8px;
+        }
+    }
+    .labels {
+        @include dFlex();
+        gap: 8px;
+        >span {
+            padding: 6px 12px;
+            border-radius: 30px;
+            background-color: #39603933;
+            font-size: 18px;
+            color: #10310B;
+        }
+        .likes {
+            @include dFlex();
+            background-color: #39603933;
+            padding: 6px 12px;
+            border-radius: 30px;
+            span {
+                font-size: 16px;
+                color: #10310B;
+            }
+        }
+    }
+}

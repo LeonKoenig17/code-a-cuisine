@@ -38,6 +38,7 @@ section {
         }
     }
     .back {
+        @include dFlex($jc: flex-start);
         width: 100%;
         gap: 10px;
         *:hover {
@@ -47,9 +48,6 @@ section {
             font-size: 14px;
             color: #1E5515;
         }
-    }
-    .back {
-        @include dFlex($jc: flex-start);
     }
     .new-recipe {
         @include dFlex($jc: flex-end);

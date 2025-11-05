@@ -5,6 +5,7 @@ import { CookbookComponent } from './cookbook/cookbook.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { ResultsComponent } from './results/results.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { CollectionComponent } from './collection/collection.component';
 
 export const routes: Routes = [
     { path: '', component: HeroPageComponent},
@@ -13,4 +14,5 @@ export const routes: Routes = [
     { path: 'results', component: ResultsComponent},
     { path: 'recipe', component: RecipeComponent},
     { path: 'cookbook', component: CookbookComponent},
+    { path: 'collection', component: CollectionComponent},
 ];

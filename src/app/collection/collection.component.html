@@ -1,1 +1,23 @@
-<p>collection works!</p>
+<section>
+    <div class="back">
+        <img routerLink="/cookbook" src="/assets/images/preferences/back-arrow.png" alt="">
+        <span routerLink="/cookbook">Cookbook</span>
+    </div>
+    <div class="collection">
+        <div class="generate-button">
+            <button routerLink="/generate-recipe">Generate a recipe</button>
+        </div>
+        <header>
+            <img src="/assets/images/collection/collection-header.png" alt="">
+            <h1>Italian cuisine</h1>
+        </header>
+        <div class="list">
+            <app-listed-recipe *ngFor="let item of pagedItems; let i = index" [index]="(currentPage - 1) * pageSize + i + 1"></app-listed-recipe>
+        </div>
+        <div class="navigation">
+            <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+            <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages()">Next</button>
+        </div>
+    </div>
+</section>
