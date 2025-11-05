@@ -72,3 +72,27 @@ section {
             color: #1E5515;
     }
 }
+
+.pagination {
+    display: flex;
+    gap: 24px;
+    button {
+        color: #10310B;
+        font-size: 18px;
+        padding: 0 8px;
+        border: none;
+        border-radius: 2px;
+        background: none;
+        &:hover {
+            cursor: pointer;
+            background-color: #D7DFD7;
+        }
+        &.active {
+            font-weight: bold;
+            background-color: #D7DFD7;
+        }
+        &[disabled] {
+            cursor: default;
+        }
+    }
+}

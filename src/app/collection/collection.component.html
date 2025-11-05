@@ -14,10 +14,16 @@
         <div class="list">
             <app-listed-recipe *ngFor="let item of pagedItems; let i = index" [index]="(currentPage - 1) * pageSize + i + 1"></app-listed-recipe>
         </div>
-        <div class="navigation">
-            <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-            <span>Page {{ currentPage }} of {{ totalPages() }}</span>
-            <button (click)="nextPage()" [disabled]="currentPage === totalPages()">Next</button>
+        <div class="pagination">
+            <button (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button> 
+            <button class="numbers"
+              *ngFor="let page of getPageNumbers()"
+              [disabled]="page === '...'"
+              [class.active]="page === currentPage"
+              (click)="page !== '...' ? goToPage(page) : null">
+              {{ page }}
+            </button>
+            <button (click)="nextPage()" [disabled]="currentPage === totalPages">&gt;</button>
         </div>
     </div>
 </section>
