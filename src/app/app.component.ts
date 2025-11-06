@@ -39,68 +39,113 @@ export class AppComponent {
   BASE_URL = "https://code-a-cuisine-522fa-default-rtdb.europe-west1.firebasedatabase.app/";
 
   async getData() {
-    this.post(this.baseStructure);
+    this.post(this.recipeData);
     await fetch(this.BASE_URL + ".json")
     .then(response => response.json())
     .then(response => console.log(response));
   }
 
   async post(data: Object) {
-    await fetch(this.BASE_URL, {
+    await fetch(this.BASE_URL + "/italian.json", {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     });
   }
 
-  baseStructure = {
-    "test-structure": [
+  inputData = {
+    "cookingTime": 20,
+    "extra-ingredients": [
       {
-        "cookingTime": 20,
-        "extra-ingredients": [
-          {
-            "name": "cheese",
-            "quantity": 40,
-            "unit": "gram"
-          },
-          {
-            "name": "olive oil",
-            "quantity": 30,
-            "unit": "ml"
-          }
-        ],
-        "likes": 66,
-        "nutrition": {
-          "carbs": 58,
-          "energy": 630,
-          "fat": 24,
-          "protein": 10
-        },
-        "preferences": "Vegetarian",
-        "steps": [
-          {
-            "description": "Cook your noodles in boiling, salted water, until the pasta is al dente.  Drain the pasta and reserve some of the pasta water.",
-            "title": "cook the pasta"
-          },
-          {
-            "description": "While the pasta is cooking, heat olive oil in a pan over medium heat. Add the garlic, and sauté until it starts to turn golden. Add the tomatoes, oregano, salt, and pepper, and cook for 3-4 minutes.",
-            "title": "make the sauce"
-          }
-        ],
-        "title": "Pasta with spinach and cherry tomatoes",
-        "your-ingredients": [
-          {
-            "name": "pasta",
-            "quantity": 80,
-            "unit": "gram"
-          },
-          {
-            "name": "spinach",
-            "quantity": 100,
-            "unit": "gram"
-          }
-        ]
+        "name": "cheese",
+        "quantity": 40,
+        "unit": "gram"
+      },
+      {
+        "name": "olive oil",
+        "quantity": 30,
+        "unit": "ml"
+      }
+    ],
+    "likes": 66,
+    "nutrition": {
+      "carbs": 58,
+      "energy": 630,
+      "fat": 24,
+      "protein": 10
+    },
+    "preferences": "Vegetarian",
+    "steps": [
+      {
+        "description": "Cook your noodles in boiling, salted water, until the pasta is al dente.  Drain the pasta and reserve some of the pasta water.",
+        "title": "cook the pasta"
+      },
+      {
+        "description": "While the pasta is cooking, heat olive oil in a pan over medium heat. Add the garlic, and sauté until it starts to turn golden. Add the tomatoes, oregano, salt, and pepper, and cook for 3-4 minutes.",
+        "title": "make the sauce"
+      }
+    ],
+    "title": "Pasta with spinach and cherry tomatoes",
+    "your-ingredients": [
+      {
+        "name": "pasta",
+        "quantity": 80,
+        "unit": "gram"
+      },
+      {
+        "name": "spinach",
+        "quantity": 100,
+        "unit": "gram"
+      }
+    ]
+  }
+
+  recipeData = {
+    "cookingTime": 20,
+    "extra-ingredients": [
+      {
+        "name": "cheese",
+        "quantity": 40,
+        "unit": "gram"
+      },
+      {
+        "name": "olive oil",
+        "quantity": 30,
+        "unit": "ml"
+      }
+    ],
+    "likes": 66,
+    "nutrition": {
+      "carbs": 58,
+      "energy": 630,
+      "fat": 24,
+      "protein": 10
+    },
+    "preferences": "Vegetarian",
+    "steps": [
+      {
+        "description": "Cook your noodles in boiling, salted water, until the pasta is al dente.  Drain the pasta and reserve some of the pasta water.",
+        "title": "cook the pasta"
+      },
+      {
+        "description": "While the pasta is cooking, heat olive oil in a pan over medium heat. Add the garlic, and sauté until it starts to turn golden. Add the tomatoes, oregano, salt, and pepper, and cook for 3-4 minutes.",
+        "title": "make the sauce"
+      }
+    ],
+    "title": "Pasta with spinach and cherry tomatoes",
+    "your-ingredients": [
+      {
+        "name": "pasta",
+        "quantity": 80,
+        "unit": "gram"
+      },
+      {
+        "name": "spinach",
+        "quantity": 100,
+        "unit": "gram"
       }
     ]
   }
 }
+
+

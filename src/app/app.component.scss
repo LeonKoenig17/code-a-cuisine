@@ -4,3 +4,12 @@
     display: block;
     min-height: 100vh;
 }
+
+button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 48px;
+}
