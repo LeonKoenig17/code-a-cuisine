@@ -1,7 +1,7 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { SingleIngredientComponent } from './single-ingredient/single-ingredient.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ServingComponent } from './serving/serving.component';
 import { FormsModule } from '@angular/forms';
 
@@ -14,16 +14,23 @@ interface Ingredient {
 @Component({
   selector: 'app-generate-recipe',
   standalone: true,
-  imports: [ NgFor, SingleIngredientComponent, RouterLink, ServingComponent, FormsModule],
+  imports: [NgFor, SingleIngredientComponent, ServingComponent, FormsModule, NgIf],
   templateUrl: './generate-recipe.component.html',
   styleUrl: './generate-recipe.component.scss'
 })
 
 export class GenerateRecipeComponent {
+  constructor(private router: Router) {}
+
   ingredientName: string = "";
   quantity: string = "";
   unit: string = "";
   ingredients: Ingredient[] = [];
+  clicked = false;
+
+  ngOnInit() {
+    this.loadList();
+  }
 
   receiveServing(event: {quantity: string, unit: string}) {
     this.quantity = event.quantity;
@@ -37,10 +44,31 @@ export class GenerateRecipeComponent {
         quantity: this.quantity.trim(),
         unit: this.unit || 'g'
       })
+      this.saveList();
+      this.loadList();
     }
   }
 
-  saveToObject() {
-    
+  removeFromList(index: number) {
+    this.ingredients.splice(index, 1);
+    this.saveList();
+    this.loadList();
+  }
+
+  saveList() {
+    localStorage.setItem('ingredients', JSON.stringify(this.ingredients));
+  }
+
+  loadList() {
+    const storedIngredients = localStorage.getItem('ingredients');
+    this.ingredients = storedIngredients ? JSON.parse(storedIngredients) : [];
+  }
+
+  nextStep() {
+    this.clicked = true;
+    if (this.ingredients && this.ingredients.length > 0) {
+      this.saveList();
+      this.router.navigate(["/preferences"]);
+    }
   }
 }

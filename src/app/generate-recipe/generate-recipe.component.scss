@@ -88,8 +88,9 @@ section {
 }
 
 .button {
-    @include dFlex($jc: flex-end);
+    @include dFlex($ai: flex-end);
     margin-right: 90px;
+    flex-direction: column;
     button {
         background-color: #396039;
         border: none;
@@ -100,6 +101,12 @@ section {
             background-color: #055E05;
             color: white;
         }
+    }
+    .error-message {
+        color: #c01616 !important;
+        font-weight: 600;
+        margin-top: 6px;
+        font-size: 20px;
     }
 }
 
