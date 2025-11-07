@@ -8,19 +8,19 @@
         <div class="portions">
             <p>How many portions do you need?</p>
             <div class="adjust">
-                <img (click)="decreasePortions()" src="/assets/images/preferences/minus.png" alt="">
+                <img (click)="adjustPortions(-1)" src="/assets/images/preferences/minus.png" alt="">
                 <span class="number">{{ portions }}</span>
                 <span class="name">Portions</span>
-                <img (click)="increasePortions()" src="/assets/images/preferences/plus.png" alt="">
+                <img (click)="adjustPortions(1)" src="/assets/images/preferences/plus.png" alt="">
             </div>
         </div>
         <div class="persons">
             <p>How many are cooking?</p>
             <div class="adjust">
-                <img (click)="decreasePersons()" src="/assets/images/preferences/minus.png" alt="">
+                <img (click)="adjustPersons(-1)" src="/assets/images/preferences/minus.png" alt="">
                 <span class="number">{{ persons }}</span>
                 <span class="name">Person</span>
-                <img (click)="increasePersons()" src="/assets/images/preferences/plus.png" alt="">
+                <img (click)="adjustPersons(1)" src="/assets/images/preferences/plus.png" alt="">
             </div>
         </div>
     </div>
@@ -28,24 +28,34 @@
         <div class="cooking-time">
             <h2><img src="/assets/images/preferences/time.png" alt="">Cooking Time:</h2>
             <div class="options">
-                <div *ngFor="let option of cookingTimes; let i = index">
-                    <button (click)="setActiveTime(i)"
-                        [class.active]="activeTimeIndex === i">
-                        {{ option.label }}</button>
-                    <span>{{ option.description }}</span>
+                <div *ngFor="let t of cookingTimes; let i = index">
+                    <button 
+                        [class.active]="activeSelection.time === i"
+                        (click)="setActive('time', i)">
+                        {{t.label}}
+                    </button>
+                    <span>{{t.description}}</span>
                 </div>
             </div>
         </div>
         <div class="cuisine">
             <h2><img src="/assets/images/preferences/cuisine.png" alt="">Cuisine</h2>
             <div class="options">
-                <button *ngFor="let cuisine of cuisines; let i = index" [ngClass]="{ 'active': activeCuisine === i }" (click)="setActiveCuisine(i)">{{ cuisine }}</button>
+                <button *ngFor="let c of cuisines; let i = index"
+                    [class.active]="activeSelection.cuisine === i"
+                    (click)="setActive('cuisine', i)">
+                    {{ c }}
+                </button>
             </div>
         </div>
         <div class="diet">
             <h2><img src="/assets/images/preferences/diet.png" alt="">Diet preferences</h2>
             <div class="options">
-                <button *ngFor="let diet of diets; let i = index" [ngClass]="{ 'active': activeDiet === i }" (click)="setActiveDiet(i)">{{ diet }}</button>
+                <button *ngFor="let d of diets; let i = index"
+                    [class.active]="activeSelection.diet === i"
+                    (click)="setActive('diet', i)">
+                    {{ d }}
+                </button>
             </div>
         </div>
     </div>
