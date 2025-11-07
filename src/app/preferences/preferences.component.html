@@ -59,5 +59,6 @@
             </div>
         </div>
     </div>
-    <button routerLink="/results">Generate a recipe</button>
+    <button (click)="generateRecipe()">Generate a recipe</button>
+    <p class="error-message" *ngIf="clicked && allPreferencesSelected">Please select your preferences!</p>
 </section>
