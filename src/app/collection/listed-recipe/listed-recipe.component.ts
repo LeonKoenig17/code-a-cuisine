@@ -9,4 +9,9 @@ import { Component, Input } from '@angular/core';
 })
 export class ListedRecipeComponent {
   @Input() index!: number;
+  @Input() recipe!: any;
+
+  ngOnInit() {
+    console.log(this.recipe);
+  }
 }

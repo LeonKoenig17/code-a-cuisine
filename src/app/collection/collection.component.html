@@ -9,10 +9,12 @@
         </div>
         <header>
             <img src="/assets/images/collection/collection-header.png" alt="">
-            <h1>Italian cuisine</h1>
+            <h1>{{cuisineName}} cuisine</h1>
         </header>
         <div class="list">
-            <app-listed-recipe *ngFor="let item of pagedItems; let i = index" [index]="(currentPage - 1) * pageSize + i + 1"></app-listed-recipe>
+            <app-listed-recipe *ngFor="let item of pagedItems; let i = index" 
+                [index]="(currentPage - 1) * pageSize + i + 1"
+                [recipe]="item"></app-listed-recipe>
         </div>
         <div class="pagination">
             <button (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button> 

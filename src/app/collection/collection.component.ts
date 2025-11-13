@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { ListedRecipeComponent } from './listed-recipe/listed-recipe.component';
 import { NgFor } from '@angular/common';
+import { DataService } from '../shared/services/data.service';
 
 @Component({
   selector: 'app-collection',
@@ -12,17 +13,32 @@ import { NgFor } from '@angular/common';
 })
 export class CollectionComponent {
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private dataService: DataService) {}
   
   cuisineName: string = "";
-  
-  ngOnInit() {
-    this.cuisineName = this.route.snapshot.paramMap.get("name")!;
-  }
-
-  items = Array.from({ length: 110 }, (_, i) => `Item ${i + 1}`);
+  data: any;
+  items: any = [];
   pageSize = 15;
   currentPage = 1;
+  savedRecipes: any = [];
+  
+  async ngOnInit() {
+    this.cuisineName = this.route.snapshot.paramMap.get("name")!;
+    await this.dataService.loadData();
+    this.data = this.dataService.getData();
+
+    if (!this.data || !this.data[this.cuisineName]) {
+      // console.warn("No items for cuisine:", this.cuisineName);
+      this.items = [];
+      return;
+    }
+    const cuisineData = this.data[this.cuisineName];
+
+    this.items = Array.isArray(cuisineData)
+      ? cuisineData
+      : Object.values(cuisineData || {});
+    console.log(this.items);
+  }
 
   get totalPages(): number {
     return Math.ceil(this.items.length / this.pageSize);

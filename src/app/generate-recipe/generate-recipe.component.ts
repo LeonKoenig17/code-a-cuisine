@@ -1,9 +1,10 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { SingleIngredientComponent } from './single-ingredient/single-ingredient.component';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ServingComponent } from './serving/serving.component';
 import { FormsModule } from '@angular/forms';
+import { DataService } from '../shared/services/data.service';
 
 interface Ingredient {
   name: string;
@@ -20,7 +21,7 @@ interface Ingredient {
 })
 
 export class GenerateRecipeComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dataService: DataService) {}
 
   ingredientName: string = "";
   quantity: string = "";
@@ -56,12 +57,13 @@ export class GenerateRecipeComponent {
   }
 
   saveList() {
-    localStorage.setItem('ingredients', JSON.stringify(this.ingredients));
+    this.dataService.setIngredients(this.ingredients);
+    console.log("saved: ", this.ingredients);
   }
-
+  
   loadList() {
-    const storedIngredients = localStorage.getItem('ingredients');
-    this.ingredients = storedIngredients ? JSON.parse(storedIngredients) : [];
+    this.ingredients = this.dataService.getIngredients();
+    console.log("loaded: ", this.ingredients);
   }
 
   nextStep() {
