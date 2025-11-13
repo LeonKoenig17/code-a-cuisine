@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { ListedRecipeComponent } from './listed-recipe/listed-recipe.component';
 import { NgFor } from '@angular/common';
 
@@ -11,6 +11,14 @@ import { NgFor } from '@angular/common';
   styleUrl: './collection.component.scss'
 })
 export class CollectionComponent {
+
+  constructor(private route: ActivatedRoute) {}
+  
+  cuisineName: string = "";
+  
+  ngOnInit() {
+    this.cuisineName = this.route.snapshot.paramMap.get("name")!;
+  }
 
   items = Array.from({ length: 110 }, (_, i) => `Item ${i + 1}`);
   pageSize = 15;

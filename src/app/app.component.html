@@ -1,3 +1,7 @@
 <app-header [logoPath]="logoPath"></app-header>
 <router-outlet></router-outlet>
-<button (click)="getData()">Execute</button>
+<div class="buttons">
+    <button (click)="getData()">GetData</button>
+    <button (click)="logJSON()">Log JSON</button>
+    <button (click)="logData()">Log Data</button>
+</div>

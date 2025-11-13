@@ -14,5 +14,5 @@ export const routes: Routes = [
     { path: 'results', component: ResultsComponent},
     { path: 'recipe', component: RecipeComponent},
     { path: 'cookbook', component: CookbookComponent},
-    { path: 'collection', component: CollectionComponent},
+    { path: 'collection/:name', component: CollectionComponent},
 ];

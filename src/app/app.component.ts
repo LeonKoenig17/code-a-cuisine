@@ -40,14 +40,22 @@ export class AppComponent {
 
   BASE_URL = "https://code-a-cuisine-522fa-default-rtdb.europe-west1.firebasedatabase.app/";
   ingredients : any[] = [];
+  preferences : any[] = [];
   inputData: any = {};
+  data = {};
 
   async getData() {
-    this.getIngredients();
-    await this.post(this.inputData);
-    await fetch(this.BASE_URL + ".json")
+    // this.buildObject();
+    // await this.post(this.inputData);
+    await fetch(this.BASE_URL + ".json", {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then(response => response.json())
-    .then(response => console.log(response));
+    .then(response => {
+      this.data = response;
+      console.log(this.data)
+    });
   }
 
   async post(data: Object) {
@@ -58,11 +66,21 @@ export class AppComponent {
     });
   }
 
-  getIngredients() {
+  logJSON() {
+    this.buildObject();
+    console.log(this.inputData);
+  }
+
+  logData() {
+    console.log(this.data);
+  }
+
+  buildObject() {
     const storedIngredients = localStorage.getItem('ingredients');
     this.ingredients = storedIngredients ? JSON.parse(storedIngredients) : [];
+    const storedPreferences = localStorage.getItem('preferences');
+    this.preferences = storedPreferences ? JSON.parse(storedPreferences) : [];
     this.inputData = {
-      "cookingTime": 20,
       "extra-ingredients": [
         {
           "name": "cheese",
@@ -82,7 +100,7 @@ export class AppComponent {
         "fat": 24,
         "protein": 10
       },
-      "preferences": "Vegetarian",
+      "preferences": this.preferences,
       "steps": [
         {
           "description": "Cook your noodles in boiling, salted water, until the pasta is al dente.  Drain the pasta and reserve some of the pasta water.",
