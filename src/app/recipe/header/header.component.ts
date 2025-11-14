@@ -12,7 +12,6 @@ export class HeaderComponent {
   minutes: string = "";
 
   ngOnInit() {
-    console.log(this.data);
     switch (this.data.cookingTime) {
       case "Quick":
         this.minutes = "20min";

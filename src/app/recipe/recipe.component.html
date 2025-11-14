@@ -4,9 +4,9 @@
         <span routerLink="/results">Recipe results</span>
     </div>
     <div class="content">
-        <app-header [data]="headerObject"></app-header>
-        <app-ingredients></app-ingredients>
-        <app-instructions></app-instructions>
+        <app-header *ngIf="headerObject && headerObject.title" [data]="headerObject"></app-header>
+        <app-ingredients *ngIf="ingredientsObject && ingredientsObject.yourIngredients" [data]="ingredientsObject"></app-ingredients>
+        <app-instructions *ngIf="path.steps" [data]="path.steps"></app-instructions>
     </div>
     <div class="cookbook-link">
         <span>Find inspiration for your next culinary adventure!</span>

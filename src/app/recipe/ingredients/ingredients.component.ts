@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-ingredients',
   standalone: true,
-  imports: [],
+  imports: [NgFor],
   templateUrl: './ingredients.component.html',
   styleUrl: './ingredients.component.scss'
 })
 export class IngredientsComponent {
-
+  @Input() data: any = {};
 }

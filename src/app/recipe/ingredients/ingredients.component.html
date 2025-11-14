@@ -7,31 +7,16 @@
         <div class="yours">
             <p>Your ingredients</p>
             <ul>
-                <li>
-                    <span>80g Pasta noodles</span>
-                </li>
-                <li>
-                    <span>100g Baby spinach</span>
-                </li>
-                <li>
-                    <span>150g Cherry tomatoes</span>
-                </li>
-                <li>
-                    <span>1 piece Egg</span>
+                <li *ngFor="let ing of data.yourIngredients">
+                    <span>{{ing.quantity}}{{ing.unit}} {{ing.name}}</span>
                 </li>
             </ul>
         </div>
         <div class="extra">
             <p>Extra ingredients</p>
             <ul>
-                <li>
-                    <span>40g Parmesan cheese</span>
-                </li>
-                <li>
-                    <span>30ml Olive oil</span>
-                </li>
-                <li>
-                    <span>Herbs (dry basil, oregano, garlic)</span>
+                <li *ngFor="let ing of data.extraIngredients">
+                    <span>{{ing.quantity}}{{ing.unit}} {{ing.name}}</span>
                 </li>
             </ul>
         </div>

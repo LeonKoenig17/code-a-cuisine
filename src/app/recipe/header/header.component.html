@@ -4,9 +4,9 @@
             <img src="/assets/images/recipe/clock.png" alt="">
             <span>Cooking time: {{minutes}}</span>
         </div>
-        <h1>Pasta with spinach and cherry tommatoes</h1>
+        <h1>{{data.title}}</h1>
         <div class="persons">
-            <span>Cooking person: 2</span>
+            <span>Cooking person: {{data.persons}}</span>
             <div class="chef1">
                 <img src="/assets/images/recipe/chef1.png" alt="">
                 <span>Chef 1</span>
@@ -19,11 +19,11 @@
     </div>
     <div class="nutrition">
         <div class="tags">
-            <span>Vegetarian</span>
-            <span>Quick</span>
+            <span>{{data.diet}}</span>
+            <span>{{data.cookingTime}}</span>
             <div class="likes">
                 <img src="/assets/images/recipe/like.png" alt="">
-                <span>66</span>
+                <span>{{data.likes}}</span>
             </div>
         </div>
         <div class="info">
@@ -31,19 +31,19 @@
             <div class="stats">
                 <div class="stat">
                     <span class="name">Energie</span>
-                    <span class="amount">630 kcal</span>
+                    <span class="amount">{{data.nutrition.energy}}kcal</span>
                 </div>
                 <div class="stat">
                     <span class="name">Protein</span>
-                    <span class="amount">18g</span>
+                    <span class="amount">{{data.nutrition.protein}}g</span>
                 </div>
                 <div class="stat">
                     <span class="name">Fat</span>
-                    <span class="amount">24g</span>
+                    <span class="amount">{{data.nutrition.fat}}g</span>
                 </div>
                 <div class="stat">
                     <span class="name">Carbs</span>
-                    <span class="amount">58g</span>
+                    <span class="amount">{{data.nutrition.carbs}}g</span>
                 </div>
             </div>
         </div>
