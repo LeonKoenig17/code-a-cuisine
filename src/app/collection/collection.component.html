@@ -14,7 +14,8 @@
         <div class="list">
             <app-listed-recipe *ngFor="let item of pagedItems; let i = index" 
                 [index]="(currentPage - 1) * pageSize + i + 1"
-                [recipe]="item"></app-listed-recipe>
+                [recipe]="item"
+                [cuisine]="cuisineName"></app-listed-recipe>
         </div>
         <div class="pagination">
             <button (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button> 

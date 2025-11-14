@@ -33,10 +33,14 @@ export class CollectionComponent {
       return;
     }
     const cuisineData = this.data[this.cuisineName];
+    console.log(cuisineData);
 
-    this.items = Array.isArray(cuisineData)
-      ? cuisineData
-      : Object.values(cuisineData || {});
+    this.items = Object.entries(cuisineData).map(([id, recipe]: any) => {
+      if (recipe && typeof recipe === 'object') {
+        return { id, ...recipe };
+      }
+      return { id, recipe };
+    });
     console.log(this.items);
   }
 

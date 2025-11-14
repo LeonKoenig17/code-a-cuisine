@@ -1,19 +1,19 @@
-<section>
+<section [routerLink]="['/recipe',cuisine, recipe.id]">
     <div class="text-grid">
         <div class="empty"></div>
         <div class="cooking-time">
             <img src="/assets/images/collection/clock.png" alt="">
-            <span>Cooking time: 20min</span>
+            <span>Cooking time: {{minutes}}</span>
         </div>
         <span>{{index}}</span>
         <p>{{recipe.title}}</p>
     </div>
     <div class="labels">
-        <span>Vegetarian</span>
-        <span>Quick</span>
+        <span>{{recipe.preferences.diet}}</span>
+        <span>{{recipe.preferences.cookingTime}}</span>
         <div class="likes">
             <img src="/assets/images/recipe/like.png" alt="">
-            <span>66</span>
+            <span>{{recipe.likes}}</span>
         </div>
     </div>
 </section>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,5 +8,24 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  @Input() data: any = {};
+  minutes: string = "";
 
+  ngOnInit() {
+    console.log(this.data);
+    switch (this.data.cookingTime) {
+      case "Quick":
+        this.minutes = "20min";
+      break;
+      case "Medium":
+        this.minutes = "25-40min";
+      break;
+      case "Complex":
+        this.minutes = "over 45min";
+      break;
+    
+      default:
+        break;
+    }
+  }
 }

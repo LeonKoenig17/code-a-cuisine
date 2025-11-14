@@ -1,6 +1,7 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { DataService } from '../shared/services/data.service';
 
 @Component({
   selector: 'app-preferences',
@@ -10,7 +11,9 @@ import { Router, RouterLink } from '@angular/router';
   styleUrls: ['./preferences.component.scss']
 })
 export class PreferencesComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private dataService: DataService) {}
+
+  webhookURL = "http://localhost:5678/webhook-test/recipe-preferences";
   
   preferences = {};
   portions = 2;
@@ -33,11 +36,6 @@ export class PreferencesComponent {
   clicked = false;
   allPreferencesSelected = (this.activeSelection.time === null || this.activeSelection.cuisine === null || this.activeSelection.diet === null);
 
-
-  ngOnInit() {
-    this.loadPreferences();
-  }
-
   setActive(type: 'time' | 'cuisine' | 'diet', index: number): void {
     this.activeSelection[type] = index;
   }
@@ -50,15 +48,6 @@ export class PreferencesComponent {
     this.persons = Math.max(1, this.persons + delta);
   }
 
-  savePreferences() {
-    localStorage.setItem('preferences', JSON.stringify(this.preferences));
-  }
-
-  loadPreferences() {
-    const storedPreferences = localStorage.getItem('preferences');
-    this.preferences = storedPreferences ? JSON.parse(storedPreferences) : [];
-  }
-
   generateRecipe() {
     this.clicked = true;
     const { time, cuisine, diet } = this.activeSelection;
@@ -68,10 +57,21 @@ export class PreferencesComponent {
         persons: this.persons,
         cookingTime: this.cookingTimes[time].label,
         cuisine: this.cuisines[cuisine],
-        diet: this.diets[diet]
+        diet: this.diets[diet],
+        ingredients: this.dataService.getIngredients()
       }
-      this.savePreferences();
+      this.sendToAgent();
       this.router.navigate(['/results']);
     }
+  }
+
+  async sendToAgent() {
+    await fetch(this.webhookURL, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.preferences)
+    });
   }
 }

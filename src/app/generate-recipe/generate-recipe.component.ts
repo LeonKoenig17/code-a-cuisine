@@ -58,12 +58,12 @@ export class GenerateRecipeComponent {
 
   saveList() {
     this.dataService.setIngredients(this.ingredients);
-    console.log("saved: ", this.ingredients);
+    // console.log("saved: ", this.ingredients);
   }
   
   loadList() {
     this.ingredients = this.dataService.getIngredients();
-    console.log("loaded: ", this.ingredients);
+    // console.log("loaded: ", this.ingredients);
   }
 
   nextStep() {
