@@ -8,9 +8,10 @@
             <div class="head">
                 <span class="number">{{i + 1}}</span>
                 <span class="title">{{step.title}}</span>
-                <div class="chef1">
+                <div [class.chef2]="i % 2 == 1" class="chef1">
                     <img src="/assets/images/recipe/chef1.png" alt="">
-                    <span>Chef 1</span>
+                    <span *ngIf="(i - 1) % 2 == 1 || i == 0">Chef 1</span>
+                    <span *ngIf="i % 2 == 1">Chef 2</span>
                 </div>
             </div>
             <p>{{step.description}}</p>
