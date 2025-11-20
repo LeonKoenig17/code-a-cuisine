@@ -11,3 +11,14 @@ section {
         cursor: pointer;
     }
 }
+
+@media (max-width: $mobile-width) {
+    section {
+        height: 50px;
+        padding: 0 10px;
+        img {
+            height: 32px;
+            width: 95px;
+        }
+    }
+}

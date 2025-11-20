@@ -13,7 +13,7 @@ import { DataService } from '../shared/services/data.service';
 export class PreferencesComponent {
   constructor(private router: Router, private dataService: DataService) {}
 
-  webhookURL = "http://localhost:5678/webhook-test/recipe-preferences";
+  webhookURL = "http://localhost:5678/webhook/recipe-preferences";
   
   preferences = {};
   portions = 2;
