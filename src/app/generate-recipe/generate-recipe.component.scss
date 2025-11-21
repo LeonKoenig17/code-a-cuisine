@@ -8,19 +8,22 @@ section {
     @include contentLimit();
     text-align: center;
     flex-direction: column;
+    overflow-x: hidden;
     h1 {
         font-size: 54px;
         color: #1E5515;
         margin-bottom: 0;
+        font-weight: 600;
     }
-    p {
+    >p {
         font-size: 24px;
+        font-weight: 600;
         color: #10310B;
     }
     .fields {
-        @include dFlex($ai: flex-start, $jc: unset);
+        @include dFlex($ai: flex-start);
         gap: 56px;
-        margin: 90px;
+        margin: 70px;
         font-weight: 500;
         >div {
             background-color: #3960394D;
@@ -61,6 +64,7 @@ section {
     width: 100%;
     input {
         width: calc(100% - 12px * 2);
+        min-width: 130px;
         font-size: 16px;
     }
 }
@@ -78,12 +82,15 @@ section {
 }
 
 .ingredient-list {
-    min-height: 200px;
+    min-height: 180px;
     width: 400px;
     text-align: start;
     .items {
         display: grid;
         gap: 6px;
+    }
+    p {
+        white-space: nowrap;
     }
 }
 
@@ -119,4 +126,54 @@ input[type=number]::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+@media (max-width: 1000px) {
+    .fields {
+        margin: 60px 0 !important;
+        gap: 30px !important;
+    }
+}
+
+@media (max-width: $mobile-width) {
+    section {
+        padding: 0 16px;
+        h1 {
+            font-size: 32px;
+        }
+        >p {
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        .button {
+            align-items: center;
+            margin: 40px 0;
+            button {
+                font-size: 16px;
+            }
+        }
+        .fields {
+            flex-direction: column;
+            margin: 0;
+            gap: 24px;
+            .ingredient-list {
+                width: calc(100% - 50px);
+                min-height: 130px;
+                p {
+                    font-size: 18px;
+                    margin-bottom: 24px;
+                }
+            }
+        }
+    }
+
+    .input {
+        flex-direction: column;
+        width: calc(100% - 50px);
+        gap: 16px;
+        min-height: unset;
+        p {
+            font-size: 18px !important;
+        }
+    }
 }

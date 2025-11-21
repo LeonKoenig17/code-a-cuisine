@@ -1,9 +1,18 @@
 <section [class.edit-mode]="editMode_enabled">
-    <div class="info">
+    <div *ngIf="!isMobile" class="info">
         <span class="bullet">&#8226;</span>
         <span *ngIf="!editMode_enabled" class="quantity">{{ quantity }}{{ unit.replace("gram", "g").replace("piece", "") }}</span>
         <app-serving (servingChange)="receiveServing($event)" [quantity]="quantity" [unit]="unit" *ngIf="editMode_enabled"></app-serving>
         <span class="name">{{ name }}</span>
+    </div>
+    <div *ngIf="isMobile" class="info">
+        <span *ngIf="editMode_enabled" class="name">{{ name }}</span>
+        <div class="edit-container">
+            <span class="bullet">&#8226;</span>
+            <span *ngIf="!editMode_enabled" class="quantity">{{ quantity }}{{ unit.replace("gram", "g").replace("piece", "") }}</span>
+            <span *ngIf="!editMode_enabled" class="name">{{ name }}</span>
+            <app-serving (servingChange)="receiveServing($event)" [quantity]="quantity" [unit]="unit" *ngIf="editMode_enabled"></app-serving>
+        </div>
     </div>
     <div class="buttons">
         <svg *ngIf="!editMode_enabled" (click)="toggleEditMode()" width="13" height="14" viewBox="0 0 13 14" fill="none" xmlns="http://www.w3.org/2000/svg">

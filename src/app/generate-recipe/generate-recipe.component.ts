@@ -33,6 +33,15 @@ export class GenerateRecipeComponent {
     this.loadList();
   }
 
+  cleanInput(event: KeyboardEvent) {
+    const letter = new RegExp("^\\p{L}$", "u");
+    const space  = event.key === " ";
+
+    if (!letter.test(event.key) && !space) {
+      event.preventDefault();
+    }
+  }
+
   receiveServing(event: {quantity: string, unit: string}) {
     this.quantity = event.quantity;
     this.unit = event.unit;
@@ -56,14 +65,19 @@ export class GenerateRecipeComponent {
     this.loadList();
   }
 
+  changeIngredients(index: number, updated: {quantity: string, unit: string}) {
+    this.ingredients[index].quantity = updated.quantity;
+    this.ingredients[index].unit = updated.unit;
+    this.saveList();
+    this.loadList();
+  }
+
   saveList() {
     this.dataService.setIngredients(this.ingredients);
-    // console.log("saved: ", this.ingredients);
   }
   
   loadList() {
     this.ingredients = this.dataService.getIngredients();
-    // console.log("loaded: ", this.ingredients);
   }
 
   nextStep() {

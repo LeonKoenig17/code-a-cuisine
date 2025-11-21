@@ -5,7 +5,11 @@
         <div class="input">
             <div class="ingredients">
                 <p>Ingredient</p>
-                <input [(ngModel)]="ingredientName" type="text">
+                <input
+                    [(ngModel)]="ingredientName"
+                    type="text"
+                    (keypress)="cleanInput($event)"
+                />
             </div>
             <div class="serving">
                 <p>Serving size</p>
@@ -23,12 +27,12 @@
                     [quantity]="ingredient.quantity"
                     [unit]="ingredient.unit"
                     (delete)="removeFromList(i)"
+                    (ingredientsChange)="changeIngredients(i, $event)"
                 ></app-single-ingredient>
             </div>
         </div>
     </div>
-    <div class="button">
+    <div *ngIf="ingredients.length > 0" class="button">
         <button (click)="nextStep()">Next step</button>
-        <p class="error-message" *ngIf="clicked && (!ingredients || ingredients.length === 0)">Please add at least 1 ingredient!</p>
     </div>
 </section>

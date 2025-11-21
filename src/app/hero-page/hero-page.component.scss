@@ -104,13 +104,13 @@ section {
 
 @media (max-width: $mobile-width) {
     :host {
-        height: calc(100vh - 50px);
+        height: calc(100vh - 52px);
     }
 
     section {
         height: 100%;
         max-height: 800px;
-        padding: 0 10px;
+        padding: 0 16px;
         position: unset;
         .text {
             max-height: 700px;
