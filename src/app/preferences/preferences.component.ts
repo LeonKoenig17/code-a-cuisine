@@ -1,5 +1,5 @@
 import { CommonModule, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { DataService } from '../shared/services/data.service';
 
@@ -12,6 +12,13 @@ import { DataService } from '../shared/services/data.service';
 })
 export class PreferencesComponent {
   constructor(private router: Router, private dataService: DataService) {}
+
+  isMobile = window.innerWidth < 800;
+    
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth < 800;
+  }
 
   webhookURL = "http://localhost:5678/webhook/recipe-preferences";
   

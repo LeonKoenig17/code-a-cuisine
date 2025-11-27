@@ -1,7 +1,7 @@
 <section>
     <div class="back">
         <img routerLink="/generate-recipe" src="/assets/images/preferences/back-arrow.png" alt="">
-        <span routerLink="/generate-recipe">Ingredients</span>
+        <span *ngIf="!isMobile" routerLink="/generate-recipe">Ingredients</span>
     </div>
     <h1>Choose your preferences</h1>
     <div class="quantities">
@@ -26,7 +26,7 @@
     </div>
     <div class="preferences">
         <div class="cooking-time">
-            <h2><img src="/assets/images/preferences/time.png" alt="">Cooking Time:</h2>
+            <h2><img src="/assets/images/preferences/time.png" alt="">Cooking Time</h2>
             <div class="options">
                 <div *ngFor="let t of cookingTimes; let i = index">
                     <button 
@@ -59,6 +59,6 @@
             </div>
         </div>
     </div>
-    <button (click)="generateRecipe()">Generate a recipe</button>
+    <button (click)="generateRecipe()">Generate recipe</button>
     <p class="error-message" *ngIf="clicked && allPreferencesSelected">Please select your preferences!</p>
 </section>

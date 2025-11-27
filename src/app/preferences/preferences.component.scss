@@ -134,3 +134,41 @@ section {
     margin-top: 6px;
     font-size: 20px;
 }
+
+@media (max-width: $mobile-width) {
+    section {
+        .back {
+            margin-top: 8px;
+        }
+        padding: 0 16px;
+        h1 {
+            font-size: 24px;
+            margin-top: 40px;
+            margin-bottom: 24px;
+            text-align: left;
+            width: 100%;
+        }
+        .quantities {
+            flex-direction: column;
+            align-items: flex-start;
+            p {
+                font-size: 16px;
+                margin: 0;
+                margin-bottom: 8px;
+            }
+            .name {
+                font-size: 18px;
+            }
+        }
+        .options {
+            gap: 8px;
+        }
+        .preferences {
+            width: unset;
+        }
+        >button {
+            margin: 40px 0;
+            font-size: 16px;
+        }
+    }
+}
