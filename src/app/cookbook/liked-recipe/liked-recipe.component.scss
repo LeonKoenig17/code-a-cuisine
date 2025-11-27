@@ -48,3 +48,21 @@ section {
         }
     }
 }
+
+@media (max-width: $mobile-width) {
+    section {
+        //width 285; height 106
+        width: calc(285px - 12px * 2);
+        height: calc(106px - 16px * 2);
+        .text {
+            p {
+                font-size: 18px;
+            }
+        }
+        .likes-div {
+            .likes {
+                padding: 2px 6px;
+            }
+        }
+    }
+}

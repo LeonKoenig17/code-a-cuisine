@@ -54,7 +54,7 @@ section {
         width: 100%;
         button {
             @include dFlex();
-            font-size: 14px;
+            font-size: 20px;
             color: #1E5515;
             gap: 10px;
             padding: 16px 26px;
@@ -98,4 +98,39 @@ section {
     height: 940px;
     flex-wrap: wrap;
     margin-bottom: 30px;
+}
+
+@media (max-width: $mobile-width) {
+    section {
+        padding: 0 16px;
+        .back {
+            margin-top: 8px;
+        }
+        header {
+            flex-direction: column;
+            max-height: unset;
+            padding: 16px;
+            margin: 40px 0;
+            width: calc(100% - 16px * 2);
+            .text {
+                h1 {
+                    font-size: 40px;
+                }
+                p {
+                    font-size: 18px;
+                }
+            }
+        }
+        .collection {
+            height: unset;
+            gap: 24px;
+        }
+    }
+    .new-recipe {
+        margin-bottom: 30px;
+        justify-content: center !important;
+        button {
+            font-size: 18px !important;
+        }
+    }
 }

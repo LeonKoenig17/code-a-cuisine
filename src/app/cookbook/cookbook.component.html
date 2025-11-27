@@ -1,7 +1,7 @@
 <section>
     <div class="back">
         <img (click)="goBack()" src="/assets/images/preferences/back-arrow.png" alt="">
-        <span (click)="goBack()">Back</span>
+        <span *ngIf="!isMobile" (click)="goBack()">Back</span>
     </div>
     <header>
         <div class="text">

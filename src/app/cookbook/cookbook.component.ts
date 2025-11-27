@@ -1,19 +1,26 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { LikedRecipeComponent } from './liked-recipe/liked-recipe.component';
 import { CuisineComponent } from './cuisine/cuisine.component';
-import { NgFor, Location } from '@angular/common';
+import { NgFor, Location, NgIf } from '@angular/common';
 import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-cookbook',
   standalone: true,
-  imports: [LikedRecipeComponent, CuisineComponent, NgFor, RouterLink],
+  imports: [LikedRecipeComponent, CuisineComponent, NgFor, RouterLink, NgIf],
   templateUrl: './cookbook.component.html',
   styleUrl: './cookbook.component.scss'
 })
 export class CookbookComponent {
 
   constructor(private location: Location) {}
+
+  isMobile = window.innerWidth < 800;
+    
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth < 800;
+  }
 
   goBack() {
     this.location.back();
