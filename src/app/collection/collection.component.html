@@ -1,18 +1,19 @@
 <section>
     <div class="back">
         <img routerLink="/cookbook" src="/assets/images/preferences/back-arrow.png" alt="">
-        <span routerLink="/cookbook">Cookbook</span>
+        <span *ngIf="!isMobile" routerLink="/cookbook">Cookbook</span>
     </div>
     <div class="collection">
-        <div class="generate-button">
+        <div *ngIf="!isMobile" class="generate-button">
             <button routerLink="/generate-recipe">Generate a recipe</button>
         </div>
         <header>
-            <img src="/assets/images/collection/collection-header.png" alt="">
+            <img [src]="imageSrc" alt="">
             <h1>{{cuisineName}} cuisine</h1>
         </header>
         <div class="list">
             <app-listed-recipe *ngFor="let item of pagedItems; let i = index" 
+                [style.background-color]="i % 2 === 1 && isMobile ? '#FAF0E6B2' : 'transparent'"
                 [index]="(currentPage - 1) * pageSize + i + 1"
                 [recipe]="item"
                 [cuisine]="cuisineName"></app-listed-recipe>
@@ -27,6 +28,9 @@
               {{ page }}
             </button>
             <button (click)="nextPage()" [disabled]="currentPage === totalPages">&gt;</button>
+        </div>
+        <div *ngIf="isMobile" class="generate-button">
+            <button routerLink="/generate-recipe">Generate a recipe</button>
         </div>
     </div>
 </section>

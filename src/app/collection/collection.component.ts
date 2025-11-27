@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { ListedRecipeComponent } from './listed-recipe/listed-recipe.component';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { DataService } from '../shared/services/data.service';
 
 @Component({
   selector: 'app-collection',
   standalone: true,
-  imports: [RouterLink, ListedRecipeComponent, NgFor],
+  imports: [RouterLink, ListedRecipeComponent, NgFor, NgIf],
   templateUrl: './collection.component.html',
   styleUrl: './collection.component.scss'
 })
 export class CollectionComponent {
 
   constructor(private route: ActivatedRoute, private dataService: DataService) {}
+  
+  isMobile = window.innerWidth < 800;
+  imageSrc = "";
+      
+  @HostListener('window:resize')
+  onResize() {
+    this.updateImage();
+  }
   
   cuisineName: string = "";
   data: any;
@@ -22,7 +30,13 @@ export class CollectionComponent {
   currentPage = 1;
   savedRecipes: any = [];
   
+  private updateImage() {
+    this.isMobile = window.innerWidth < 800;
+    this.imageSrc = this.isMobile ? `/assets/images/collection/collection-header-resp.png` : `/assets/images/collection/collection-header.png`;
+  }
+
   async ngOnInit() {
+    this.updateImage();
     this.cuisineName = this.route.snapshot.paramMap.get("name")!;
     await this.dataService.loadData();
     this.data = this.dataService.getData();

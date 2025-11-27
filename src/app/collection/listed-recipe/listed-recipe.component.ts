@@ -1,14 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, HostListener, Input } from '@angular/core';
 import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-listed-recipe',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgIf],
   templateUrl: './listed-recipe.component.html',
   styleUrl: './listed-recipe.component.scss'
 })
 export class ListedRecipeComponent {
+
+  isMobile = window.innerWidth < 800;
+      
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth < 800;
+  }
 
   @Input() index!: number;
   @Input() recipe!: any;

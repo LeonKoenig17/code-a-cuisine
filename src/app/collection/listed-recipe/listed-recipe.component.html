@@ -2,10 +2,11 @@
     <div class="text-grid">
         <div class="empty"></div>
         <div class="cooking-time">
+            <span *ngIf="isMobile" class="index">{{index}}</span>
             <img src="/assets/images/collection/clock.png" alt="">
             <span>Cooking time: {{minutes}}</span>
         </div>
-        <span>{{index}}</span>
+        <span *ngIf="!isMobile" class="index">{{index}}</span>
         <p>{{recipe.title}}</p>
     </div>
     <div class="labels">

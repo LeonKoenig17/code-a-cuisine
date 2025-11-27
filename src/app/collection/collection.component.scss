@@ -96,3 +96,37 @@ section {
         }
     }
 }
+
+@media (max-width: $mobile-width) {
+    section {
+        padding: 0 16px;
+        .back {
+            margin-top: 8px;
+        }
+        .collection {
+            width: unset;
+            padding: 0;
+            gap: 30px;
+            margin-top: 30px;
+            header {
+                h1 {
+                    font-size: 18px;
+                }
+            }
+            .list {
+                height: unset;
+                gap: 32px;
+            }
+            .pagination {
+                margin: 10px 0;
+            }
+            .generate-button {
+                justify-content: center;
+                margin-bottom: 30px;
+                button {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
