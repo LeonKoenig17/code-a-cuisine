@@ -1,6 +1,6 @@
 <section>
     <div class="heading">
-        <img src="/assets/images/recipe/instructions.png" alt="">
+        <img [src]="imageSrc" alt="">
         <h1>Instructions</h1>
     </div>
     <div class="grid-container">
@@ -18,8 +18,10 @@
         </div>
     </div>
     <div class="like-box">
-        <span class="first">Just finished this meal?</span>
-        <span class="second">Give it a heart, so that the others know this is delicious.</span>
-        <button><img [src]="imageSrc" (click)="toggleSrc()" alt=""></button>
+        <div class="text">
+            <span class="first">Just finished this meal?</span>
+            <span class="second">Give it a heart, so that the others know this is delicious.</span>
+        </div>
+        <button><img [src]="heartSrc" (click)="toggleSrc()" alt=""></button>
     </div>
 </section>

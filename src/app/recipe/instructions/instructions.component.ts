@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 
 @Component({
   selector: 'app-instructions',
@@ -9,12 +9,30 @@ import { Component, Input } from '@angular/core';
   styleUrl: './instructions.component.scss'
 })
 export class InstructionsComponent {
+
+  isMobile = window.innerWidth < 800;
+  imageSrc: string = "";
+        
+  @HostListener('window:resize')
+  onResize() {
+    this.updateImage();
+  }
+  
+  ngOnInit() {
+    this.updateImage();
+  }
+  
+  private updateImage() {
+    this.isMobile = window.innerWidth < 800;
+    this.imageSrc = this.isMobile ? "/assets/images/recipe/instructions-resp.png" : "/assets/images/recipe/instructions.png";
+  }
+  
   @Input() data: any = {};
-  imageSrc: string = "/assets/images/recipe/heart.png";
+  heartSrc: string = "/assets/images/recipe/heart.png";
 
   toggleSrc() {
-    this.imageSrc = 
-      this.imageSrc === "/assets/images/recipe/heart.png"
+    this.heartSrc = 
+      this.heartSrc === "/assets/images/recipe/heart.png"
         ? "/assets/images/recipe/heart-full.png"
         : "/assets/images/recipe/heart.png";
   }

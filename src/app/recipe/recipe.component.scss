@@ -79,11 +79,26 @@ section {
 @media (max-width: $mobile-width) {
     section {
         padding: 0 16px;
+        .back {
+            margin-top: 8px;
+        }
         .content {
             padding: 12px 8px 32px 8px;
             border: 3px solid #FAF0E6;
             border-radius: 16px;
             width: calc(100% - 8px * 2 - 3px * 2);
+            margin: 30px 0;
+        }
+        .cookbook-link {
+            width: calc(100% - 14px * 2);
+            padding: 16px 14px;
+            gap: 16px;
+            span, button {
+                font-size: 16px;
+            }
+            button {
+                padding: 10px 16px;
+            }
         }
     }
 }
