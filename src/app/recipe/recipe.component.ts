@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { InstructionsComponent } from './instructions/instructions.component';
@@ -15,6 +15,13 @@ import { NgIf } from '@angular/common';
 })
 export class RecipeComponent {
   constructor(private route: ActivatedRoute, private dataService: DataService) {}
+
+  isMobile = window.innerWidth < 800;
+      
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth < 800;
+  }
 
   UNIT_MAP: Record<string, string> = {
     gram: "g",
@@ -57,8 +64,7 @@ export class RecipeComponent {
   }
 
   buildInstructionsDataObject() {
-
-    console.log("instructions", this.path.steps);
+    // console.log("instructions", this.path.steps);
   }
 
   convertUnits(ingredients: any[]) {

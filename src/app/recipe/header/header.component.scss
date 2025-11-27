@@ -76,8 +76,7 @@ section {
         }
     }
     .info {
-        @include dFlex($ai: flex-start);
-        flex-direction: column;
+        display: grid;
         gap: 8px;
         p {
             font-size: 18px;
@@ -97,6 +96,36 @@ section {
                 .amount {
                     font-size: 20px;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: $mobile-width) {
+    section {
+        flex-direction: column;
+        gap: 48px;
+        align-items: flex-start;
+        .description {
+            display: grid;
+            gap: 16px;
+            h1 {
+                font-size: 24px;
+            }
+            .cooking-time {
+                span {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+    .nutrition {
+        .tags {
+            gap: 8px;
+        }
+        .stats {
+            .name, .amount {
+                font-size: 18px !important;
             }
         }
     }

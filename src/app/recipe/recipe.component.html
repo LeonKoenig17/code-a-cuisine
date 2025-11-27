@@ -1,17 +1,17 @@
 <section>
     <div class="back">
         <img routerLink="/results" src="/assets/images/preferences/back-arrow.png" alt="">
-        <span routerLink="/results">Recipe results</span>
+        <span *ngIf="!isMobile" routerLink="/results">Recipe results</span>
     </div>
     <div class="content">
         <app-header *ngIf="headerObject && headerObject.title" [data]="headerObject"></app-header>
-        <app-ingredients *ngIf="ingredientsObject && ingredientsObject.yourIngredients" [data]="ingredientsObject"></app-ingredients>
-        <app-instructions *ngIf="path.steps" [data]="path.steps"></app-instructions>
+        <!-- <app-ingredients *ngIf="ingredientsObject && ingredientsObject.yourIngredients" [data]="ingredientsObject"></app-ingredients> -->
+        <!-- <app-instructions *ngIf="path.steps" [data]="path.steps"></app-instructions> -->
     </div>
-    <div class="cookbook-link">
+    <!-- <div class="cookbook-link">
         <span>Find inspiration for your next culinary adventure!</span>
         <button routerLink="/cookbook">Cookbook</button>
-    </div>
+    </div> -->
     <div class="new-recipe">
         <button routerLink="/generate-recipe">Generate new recipe<img src="/assets/images/recipe/forward-arrow.png" alt=""></button>
     </div>

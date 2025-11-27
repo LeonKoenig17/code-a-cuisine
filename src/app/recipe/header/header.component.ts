@@ -1,13 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [NgIf],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+
+  isMobile = window.innerWidth < 800;
+        
+  @HostListener('window:resize')
+  onResize() {
+    this.isMobile = window.innerWidth < 800;
+  }
+
   @Input() data: any = {};
   minutes: string = "";
 

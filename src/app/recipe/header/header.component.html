@@ -6,7 +6,7 @@
         </div>
         <h1>{{data.title}}</h1>
         <div class="persons">
-            <span>Cooking person: {{data.persons}}</span>
+            <span *ngIf="!isMobile">Cooking person: {{data.persons}}</span>
             <div class="chef1">
                 <img src="/assets/images/recipe/chef1.png" alt="">
                 <span>Chef 1</span>
@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="nutrition">
-        <div class="tags">
+        <div *ngIf="!isMobile" class="tags">
             <span>{{data.diet}}</span>
             <span>{{data.cookingTime}}</span>
             <div class="likes">
@@ -45,6 +45,14 @@
                     <span class="name">Carbs</span>
                     <span class="amount">{{data.nutrition.carbs}}g</span>
                 </div>
+            </div>
+        </div>
+        <div *ngIf="isMobile" class="tags">
+            <span>{{data.diet}}</span>
+            <span>{{data.cookingTime}}</span>
+            <div class="likes">
+                <img src="/assets/images/recipe/like.png" alt="">
+                <span>{{data.likes}}</span>
             </div>
         </div>
     </div>
