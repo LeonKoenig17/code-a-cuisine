@@ -44,3 +44,21 @@ section {
         }
     }
 }
+
+@media (max-width: $mobile-width) {
+    section {
+        min-height: unset;
+        // height: calc(294px - 32px * 2);
+        p {
+            font-size: 24px;
+            margin: 16px 0;
+        }
+        .cooking-time {
+            margin-bottom: 30px;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 18px;
+        }
+    }
+}

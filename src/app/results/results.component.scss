@@ -49,3 +49,54 @@ section {
         }
     }
 }
+.new-recipe {
+    @include dFlex($jc: flex-end);
+    width: 100%;
+    button {
+        @include dFlex();
+        font-size: 20px;
+        color: #FAF0E6;
+        gap: 10px;
+        padding: 16px 26px;
+        border: none;
+        background: none;
+        &:hover {
+            background-color: #FAE0C633;
+        }
+    }
+}
+
+@media (max-width: $mobile-width) {
+    section {
+        padding: 0 16px;
+        gap: 48px;
+        .header {
+            flex-direction: column;
+            height: unset;
+            .text {
+                gap: 16px;
+                h1 {
+                    font-size: 32px;
+                }
+                img {
+                    width: 100%;
+                }
+                p {
+                    font-size: 18px;
+                    margin: 0;
+                }
+            }
+        }
+        .results {
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+    .new-recipe {
+        margin-bottom: 48px;
+        justify-content: center;
+        button {
+            font-size: 18px;
+        }
+    }
+}

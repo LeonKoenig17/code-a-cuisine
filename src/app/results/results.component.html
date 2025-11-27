@@ -1,18 +1,22 @@
 <section>
     <div class="header">
         <div class="text">
-            <h1>The recipe results</h1>
+            <h1>Generated recipes</h1>
+            <img *ngIf="isMobile" src="/assets/images/results/ai-chef.png" alt="">
             <p>We took what you have and let our AI do the thinking. Here are 3 easy recipes you can make right now!</p>
             <div class="tags">
                 <span>Italian</span>
                 <span>Quick</span>
             </div>
         </div>
-        <img src="/assets/images/results/ai-chef.png" alt="">
+        <img *ngIf="!isMobile" src="/assets/images/results/ai-chef.png" alt="">
     </div>
     <div class="results">
         <app-single-result></app-single-result>
         <app-single-result></app-single-result>
         <app-single-result></app-single-result>
+    </div>
+    <div class="new-recipe">
+        <button routerLink="/generate-recipe">Generate new recipe<img src="/assets/images/results/forward-arrow-light.png" alt=""></button>
     </div>
 </section>
