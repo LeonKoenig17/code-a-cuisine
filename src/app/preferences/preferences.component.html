@@ -30,8 +30,8 @@
             <div class="options">
                 <div *ngFor="let t of cookingTimes; let i = index">
                     <button 
-                        [class.active]="activeSelection.time === i"
-                        (click)="setActive('time', i)">
+                        [class.active]="activeSelection.t === i"
+                        (click)="setActive('t', i)">
                         {{t.label}}
                     </button>
                     <span>{{t.description}}</span>
@@ -42,8 +42,8 @@
             <h2><img src="/assets/images/preferences/cuisine.png" alt="">Cuisine</h2>
             <div class="options">
                 <button *ngFor="let c of cuisines; let i = index"
-                    [class.active]="activeSelection.cuisine === i"
-                    (click)="setActive('cuisine', i)">
+                    [class.active]="activeSelection.c === i"
+                    (click)="setActive('c', i)">
                     {{ c }}
                 </button>
             </div>
@@ -52,13 +52,12 @@
             <h2><img src="/assets/images/preferences/diet.png" alt="">Diet preferences</h2>
             <div class="options">
                 <button *ngFor="let d of diets; let i = index"
-                    [class.active]="activeSelection.diet === i"
-                    (click)="setActive('diet', i)">
+                    [class.active]="activeSelection.d === i"
+                    (click)="setActive('d', i)">
                     {{ d }}
                 </button>
             </div>
         </div>
     </div>
     <button (click)="generateRecipe()">Generate recipe</button>
-    <p class="error-message" *ngIf="clicked && allPreferencesSelected">Please select your preferences!</p>
 </section>

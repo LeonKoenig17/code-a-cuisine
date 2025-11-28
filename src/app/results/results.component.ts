@@ -2,12 +2,13 @@ import { Component, HostListener } from '@angular/core';
 import { SingleResultComponent } from './single-result/single-result.component';
 import { DataService } from '../shared/services/data.service';
 import { NgIf } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-results',
   standalone: true,
-  imports: [SingleResultComponent, NgIf],
+  imports: [SingleResultComponent, NgIf, RouterLink],
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss'
 })

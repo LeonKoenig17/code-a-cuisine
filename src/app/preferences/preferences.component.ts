@@ -35,15 +35,14 @@ export class PreferencesComponent {
   diets = ['Vegetarian', 'Vegan', 'Keto', 'No preferences'];
 
   activeSelection = {
-    time: null as number | null,
-    cuisine: null as number | null,
-    diet: null as number | null
+    t: null as number | null,
+    c: null as number | null,
+    d: null as number | null
   };
 
   clicked = false;
-  allPreferencesSelected = (this.activeSelection.time === null || this.activeSelection.cuisine === null || this.activeSelection.diet === null);
 
-  setActive(type: 'time' | 'cuisine' | 'diet', index: number): void {
+  setActive(type: 't' | 'c' | 'd', index: number): void {
     this.activeSelection[type] = index;
   }
 
@@ -57,16 +56,20 @@ export class PreferencesComponent {
 
   generateRecipe() {
     this.clicked = true;
-    const { time, cuisine, diet } = this.activeSelection;
-    if (time !== null && cuisine !== null && diet !== null) {
+    const { t, c, d } = this.activeSelection;
+    if (t !== null && c !== null && d !== null) {
+      const time = this.cookingTimes[t].label;
+      const cuisine = this.cuisines[c];
+      const diet = this.diets[d];
       this.preferences = {
         portions: this.portions,
         persons: this.persons,
-        cookingTime: this.cookingTimes[time].label,
-        cuisine: this.cuisines[cuisine],
-        diet: this.diets[diet],
+        cookingTime: time,
+        cuisine: cuisine,
+        diet: diet,
         ingredients: this.dataService.getIngredients()
       }
+      this.dataService.setPreferences({time, cuisine, diet});
       this.sendToAgent();
       this.router.navigate(['/results']);
     }
