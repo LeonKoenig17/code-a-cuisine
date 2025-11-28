@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -9,8 +9,30 @@ import { RouterLink } from '@angular/router';
   styleUrl: './single-result.component.scss'
 })
 export class SingleResultComponent {
-  description = "";
-  time = "";
+  @Input() recipe: any;
+  @Input() index!: number;
 
-  results = [];
+  title: string = "";
+  cookingTime: string = "";
+  cuisine: string = "";
+
+  ngOnInit() {
+    this.title = this.recipe.title;
+    this.cookingTime = this.recipe.preferences.cookingTime;
+    this.cuisine = this.recipe.preferences.cuisine;
+    switch (this.cookingTime) {
+      case "Quick":
+        this.cookingTime = "up to 20min"
+        break;
+      case "Medium":
+        this.cookingTime = "25 - 40min"
+        break;
+      case "Complex":
+        this.cookingTime = "over 40min"
+        break;
+    
+      default:
+        break;
+    }
+  }
 }

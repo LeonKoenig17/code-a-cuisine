@@ -42,7 +42,6 @@ export class CollectionComponent {
     this.data = this.dataService.getData();
 
     if (!this.data || !this.data[this.cuisineName]) {
-      // console.warn("No items for cuisine:", this.cuisineName);
       this.items = [];
       return;
     }

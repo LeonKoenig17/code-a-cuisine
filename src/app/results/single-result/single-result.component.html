@@ -1,12 +1,12 @@
 <section>
     <div class="heading">
         <img src="/assets/images/results/res-icon.png" alt="">
-        <span>Recipe 1</span>
+        <span>Recipe {{index + 1}}</span>
     </div>
-    <p>Pasta with spinach and cherry tomatoes</p>
+    <p>{{title}}</p>
     <div class="cooking-time">
         <img src="/assets/images/results/clock.png" alt="">
-        <span>Cooking time: 20min</span>
+        <span>Cooking time: {{cookingTime}}</span>
     </div>
-    <button routerLink="/recipe">View</button>
+    <button [routerLink]="['/recipe', cuisine, recipe.id]">View</button>
 </section>

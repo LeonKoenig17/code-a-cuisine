@@ -28,7 +28,7 @@ export class DataService {
     const response = await fetch(this.BASE_URL + ".json");
     const json = await response.json();
 
-    this.setData(json); // update global + localStorage
+    this.setData(json);
     return json;
   }
 
