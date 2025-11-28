@@ -2,6 +2,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { DataService } from '../shared/services/data.service';
+import { EventService } from '../shared/services/event-service.service';
 
 @Component({
   selector: 'app-preferences',
@@ -11,7 +12,11 @@ import { DataService } from '../shared/services/data.service';
   styleUrls: ['./preferences.component.scss']
 })
 export class PreferencesComponent {
-  constructor(private router: Router, private dataService: DataService) {}
+  constructor(
+    private router: Router, 
+    private dataService: DataService,
+    private eventService: EventService
+  ) {}
 
   isMobile = window.innerWidth < 800;
     
@@ -19,8 +24,6 @@ export class PreferencesComponent {
   onResize() {
     this.isMobile = window.innerWidth < 800;
   }
-
-  webhookURL = "http://localhost:5678/webhook/recipe-preferences";
   
   preferences = {};
   portions = 2;
@@ -69,19 +72,9 @@ export class PreferencesComponent {
         diet: diet,
         ingredients: this.dataService.getIngredients()
       }
-      this.dataService.setPreferences({time, cuisine, diet});
-      this.sendToAgent();
+      this.dataService.setPreferences(this.preferences);
+      this.eventService.triggerAction();
       this.router.navigate(['/results']);
     }
-  }
-
-  async sendToAgent() {
-    await fetch(this.webhookURL, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.preferences)
-    });
   }
 }
