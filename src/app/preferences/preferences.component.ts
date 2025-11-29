@@ -58,6 +58,7 @@ export class PreferencesComponent {
   }
 
   generateRecipe() {
+    if (this.clicked) return;
     this.clicked = true;
     const { t, c, d } = this.activeSelection;
     if (t !== null && c !== null && d !== null) {

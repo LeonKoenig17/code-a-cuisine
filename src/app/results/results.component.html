@@ -1,5 +1,5 @@
 <section>
-    <div *ngIf="success" class="header">
+    <div *ngIf="!isGenerating" class="header">
         <div class="text">
             <h1>Generated recipes</h1>
             <img *ngIf="isMobile" src="/assets/images/results/ai-chef.png" alt="">
@@ -11,16 +11,16 @@
         </div>
         <img *ngIf="!isMobile" src="/assets/images/results/ai-chef.png" alt="">
     </div>
-    <div *ngIf="success" class="results">
+    <div *ngIf="!isGenerating" class="results">
         <app-single-result *ngFor="let item of items; let i = index"
             [recipe]="item"
             [index]="i"
         ></app-single-result>
     </div>
-    <div *ngIf="success" class="new-recipe">
+    <div *ngIf="!isGenerating" class="new-recipe">
         <button routerLink="/generate-recipe">Generate new recipe<img src="/assets/images/results/forward-arrow-light.png" alt=""></button>
     </div>
-    <div *ngIf="!success" class="loadingScreen">
+    <div *ngIf="isGenerating" class="loadingScreen">
         <div class="image-div">
             <img src="assets/images/results/loading.gif" alt="">
         </div>

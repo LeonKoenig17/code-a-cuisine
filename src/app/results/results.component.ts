@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { ChangeDetectorRef, Component, HostListener } from '@angular/core';
 import { SingleResultComponent } from './single-result/single-result.component';
 import { DataService } from '../shared/services/data.service';
 import { NgIf, NgForOf } from '@angular/common';
@@ -14,11 +14,14 @@ import { EventService } from '../shared/services/event-service.service';
   styleUrl: './results.component.scss'
 })
 export class ResultsComponent {
-  constructor(private dataService: DataService, private eventService: EventService) {}
+  constructor(
+    private dataService: DataService,
+    private eventService: EventService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   isMobile = window.innerWidth < 800;
   webhookURL = "http://localhost:5678/webhook/recipe-preferences";
-  success = true;
   preferences: any = {};
   cuisine: string = "";
   cookingTime: string = "";
@@ -30,17 +33,18 @@ export class ResultsComponent {
   }
 
   async ngOnInit() {
-    this.eventService.trigger$.subscribe(() => {
-      this.sendToAgent(this.dataService.getPreferences());
+    this.eventService.trigger$.subscribe(async () => {
+      await this.sendToAgent(this.dataService.getPreferences());
     });
     this.preferences = this.dataService.getPreferences();
     this.cuisine = this.preferences.cuisine;
     this.cookingTime = this.preferences.cookingTime;
-    await this.getGeneratedRecipes();
+    if (!this.isGenerating) {
+      await this.getGeneratedRecipes();
+    }
   }
   
   async sendToAgent(savedPreferences: any) {
-    this.success = false;
     console.log("starting workflow");
     const res = await fetch(this.webhookURL, {
       method: "POST",
@@ -57,12 +61,13 @@ export class ResultsComponent {
     } else {
       console.log('Execution successful');
       await this.getGeneratedRecipes();
-      this.success = true;
+      this.isGenerating = false;
     }
   }
 
-  private async getGeneratedRecipes() {
+  async getGeneratedRecipes() {
     await this.dataService.loadData();
+    this.cuisine = this.dataService.getPreferences().cuisine;
     let allRecipes = this.dataService.getData();
     let entries = Object.entries(allRecipes[this.cuisine]);
     entries.sort((a: any, b: any) =>
@@ -73,5 +78,15 @@ export class ResultsComponent {
       id,
       ...(recipe as object)
     }));
+    this.cdr.detectChanges();
+    console.log("items", this.items);
+  }
+
+  get isGenerating() {
+    return this.eventService.isGenerating;
+  }
+  
+  set isGenerating(val: boolean) {
+    this.eventService.isGenerating = val;
   }
 }
